@@ -33,7 +33,8 @@ include("autoloader.php");
         <div class ="row w-100 p-3" style="background-color: #eee;">
           <!--<div class="w-100 p-3" style="background-color: #eee;">Width 100%</div>-->
           <div class ="container row justify-content-between">
-            <p class="text-uppercase"><hi><strong>Welcome TO TRoster</strong></hi></p>
+            <p class="text-uppercase "><hi><strong>Welcome TO TRoster</strong></hi></p>
+            
             <button type="button" class="btn btn-outline-secondary">Register Now</button>
           </div>
         </div>
