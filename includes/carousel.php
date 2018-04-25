@@ -6,7 +6,7 @@
   </ol>
   <div class="carousel-inner" role="listbox" style=" width:100%; height: 500px !important;">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="images/bear.jpg" alt="First slide">
+      <img class="d-block w-100 img-fluid" src="images/bear.jpg" alt="First slide">
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="images/dog.jpg" alt="Second slide">
