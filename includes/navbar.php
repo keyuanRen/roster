@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between ">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between sticky-top">
   <a class="navbar-brand " href="index.php"><img class="rounded" width="100px" height="70px" src="images/logo.jpg"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,11 +11,32 @@
   -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav d-flex justify-content-end w-100"> <!--mr-auto-->
+    
+      <?php
+      // if( count($navigation) > 0 ){
+        
+      //   foreach( $navigation as $name => $link ){
+      //     //if the link matches the current page, set active as 'active'
+      //     if( $link == $nav_obj -> current_page ){
+      //       $active = "active";
+      //     }
+      //     else{
+      //       unset($active);
+      //     }
+          
+      //     echo "<li class=\"nav-item $active\">
+      //             <a class=\"nav-link\" href=\"/$link\">$name</a>
+      //           </li>";
+      //   }
+      // }
+      ?>
+    
+    
       <li class="nav-item active">
-        <a class="nav-link" href="#">Register <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="register.php">Register <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Login</a>
+        <a class="nav-link" href="login.php">Login</a>
       </li>
       <!--<li class="nav-item dropdown">-->
       <!--  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
@@ -29,7 +50,7 @@
       <!--  </div>-->
       <!--</li>-->
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Account</a>
+        <a class="nav-link disabled" href="https://coffee-manager-keyuan123.c9users.io/phpmyadmin">Database</a>
       </li>
     </ul>
     <!--

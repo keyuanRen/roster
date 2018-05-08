@@ -8,7 +8,7 @@ class Database
     
     protected $connection;
     
-    protected function __constrcut()
+    protected function __construct()
     {
         $this -> username = getenv('dbuser');
         $this -> password = getenv('dbpassword');
