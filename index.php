@@ -6,7 +6,7 @@ include("autoloader.php");
 <!doctype html>
 <html>
     <?php include('includes/head.php'); ?>
-    <body></body>
+    <body>
       <?php include('includes/navbar.php'); ?>
       <?php include('includes/carousel.php'); ?>
         
