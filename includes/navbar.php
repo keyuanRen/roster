@@ -38,20 +38,18 @@
       <li class="nav-item">
         <a class="nav-link" href="login.php">Login</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="managerSetting.php">Manager</a>
-      </li>
-      <!--<li class="nav-item dropdown">-->
-      <!--  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-      <!--    Dropdown-->
-      <!--  </a>-->
-      <!--  <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-      <!--    <a class="dropdown-item" href="#">Action</a>-->
-      <!--    <a class="dropdown-item" href="#">Another action</a>-->
-      <!--    <div class="dropdown-divider"></div>-->
-      <!--    <a class="dropdown-item" href="https://coffee-manager-keyuan123.c9users.io/phpmyadmin">Database</a>-->
-      <!--  </div>-->
+      <!--<li class="nav-item">-->
+      <!--  <a class="nav-link" href="managerSetting.php">Manager</a>-->
       <!--</li>-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Manager
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="managerRoster.php">managerRoster</a>
+          <a class="dropdown-item" href="managerSetting.php">managerSetting</a>
+          <a class="dropdown-item" href="managerConfirm.php">managerConfirm</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="https://coffee-manager-keyuan123.c9users.io/phpmyadmin">Database</a>
       </li>

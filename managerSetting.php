@@ -50,18 +50,6 @@ include("autoloader.php");
             </div>
           </div>
           
-          <div class="form-row">
-            
-            <div class="form-group col-md-4">
-              <label for="inputState">State</label>
-              <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
-              </select>
-            </div>
-           
-          </div>
-          
           <div>
             <label><h3>Working Day:</h3></label>
           </div>
@@ -97,7 +85,7 @@ include("autoloader.php");
           
         </form>
         
-        <button type="submit" class="btn btn-primary" href="managerConfirm.php">Confirm Setting</button>
+        <button type="submit" class="btn btn-primary float-right" onclick="window.open('managerConfirm.php','_self');">Confirm Setting</button>
           
     </body>
     <footer>

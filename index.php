@@ -35,7 +35,7 @@ include("autoloader.php");
                 <p>Register Now!      Get Your Business Runnning!</p>
               </div>
               <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 registerBtn">
-                <button type="button" class="btn btn-outline-danger" href="register.php">Register Now</button>
+                <button type="button" onclick="window.open('register.php','_self');" class="btn btn-outline-danger">Register Now</button>
               </div>
             </div>
           </div>
