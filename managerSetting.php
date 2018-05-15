@@ -10,14 +10,22 @@ include("autoloader.php");
         <?php include('includes/navbar.php'); ?>
         
         <div>
-            <img class="managerBanner" src="images/carousel3.jpg">
+            <img class="managerBanner" src="images/banner3.jpeg">
         </div> 
         
-        <form>
+        <form class="settingForm">
           
           <div class="form-group row">
             <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg"><h2>Company Name:</h2></label>
             <input type="companyName" class="form-control form-control-lg col-sm-4" id="colFormLabelLg" placeholder="Enter your company name">
+          </div>
+          <div class="form-group row">
+            <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg"><h3>Company Address:</h3></label>
+            <input type="companyAddress" class="form-control form-control-lg col-sm-4" id="colFormLabelLg" placeholder="Enter your company address">
+          </div>
+          <div class="form-group row">
+            <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg"><h3>Company Access Code:</h3></label>
+            <input type="companyAccessCode" class="form-control form-control-lg col-sm-4" id="colFormLabelLg" placeholder="Enter your code">
           </div>
           
           <div>
@@ -33,20 +41,12 @@ include("autoloader.php");
               <label for="inputFinishTime">Finish Time</label>
               <input type="finishTime" class="form-control" id="inputFinishTime" placeholder="5:30pm">
             </div>
-            <div class="form-group col-md-4">
-              <label for="inputBreakTime">Break Time</label>
-              <input type="breakTime" class="form-control" id="inputBreakTime" placeholder="12:30pm to 1:30pm">
-            </div>
           </div>
           
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmployeePosition">Employee Position</label>
               <input type="employeePosition" class="form-control" id="inputEmployeePosition" placeholder="SalesClerk/cooker">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputEmployeeNumber">Employee Number</label>
-              <input type="employeeNumber" class="form-control" id="inputEmployeeNumber" placeholder="3 employee">
             </div>
           </div>
           

@@ -4,9 +4,9 @@ include('autoloader.php');
 //handle POST request
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
-  $credentials=$POST["credentials"];
-  $password=$POST["password"];
-  echo $credentials+$password;
+  $credentials=$_POST["credentials"];
+  $password=$_POST["password"];
+  echo $credentials. " " . $password;
   //create instance of account class
   $account=new Account();
   $login=$account->authenticate($credentials,$password);
@@ -29,9 +29,17 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
   <?php include ('includes/head.php'); ?>
   <body>
     <?php include('includes/navbar.php'); ?>
-    <div class="container content">
+    <div class="container-fluid content">
+      
       <div class="row">
-        <div class="col-md-4 offset-md-4"> 
+      
+        <div class="col-md-6 col-sm-6 col-xs-12 item">
+                  
+        <img class="logoBanner img-fluid" src="images/logo.png">
+        
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12 item loginDiv"> 
           <?php
           if( count($account -> errors) > 0 ){
             $error_string = implode(' ', $account -> errors );
@@ -44,6 +52,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                     </div>";
           echo $error_string;
           ?>
+          
           <h4>Login to your account</h4>
           <form id="register-form" method="post" action="login.php">
             <div class="form-group">

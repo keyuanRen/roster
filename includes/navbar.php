@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between sticky-top">
-  <a class="navbar-brand " href="index.php"><img class="rounded" width="100px" height="70px" src="images/logo.jpg"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark d-flex align-items-center sticky-top">
+  <a class="navbar-brand order-1" href="index.php"><img class="rounded" width="120px" height="100px" src="images/logo.png"></a>
+  <button class="navbar-toggler order-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <!--
@@ -9,7 +9,16 @@
     Bootstrap
   </a>
   -->
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+   <div class="navbar-text d-flex justify-content-end flex-fill w-md-50 order-2">
+      <?php
+      if( $_SESSION["username"] ){
+        $user = $_SESSION["username"];
+        echo "Hello ".$user;
+      }
+      ?>
+  </div>
+  <div class="collapse navbar-collapse order-10" id="navbarSupportedContent">
+    
     <ul class="navbar-nav d-flex justify-content-end w-100"> <!--mr-auto-->
     
       <?php
@@ -38,6 +47,9 @@
       <li class="nav-item">
         <a class="nav-link" href="login.php">Login</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login.php">Employee</a>
+      </li>
       <!--<li class="nav-item">-->
       <!--  <a class="nav-link" href="managerSetting.php">Manager</a>-->
       <!--</li>-->
@@ -61,4 +73,5 @@
     </form>
     -->
   </div>
+ 
 </nav>

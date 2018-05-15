@@ -27,7 +27,9 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
   <?php include ('includes/head.php'); ?>
   <body>
     <?php include('includes/navbar.php'); ?>
+    
     <div class="container content">
+      
       <?php
       if( count($success) > 0 ){
         $msg = implode( " ", $success );
@@ -50,8 +52,18 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
       </div>";
       }
       ?>
+      
+      
+      
       <div class="row">
-        <div class="col-md-4 offset-md-4">
+        
+        <div class="col-md-6 col-sm-6 col-xs-12 item">
+                  
+        <img class="logoBanner img-fluid" src="images/logo.png">
+        
+        </div>
+        
+        <div class="col-md-6 col-sm-6 col-xs-12 item loginDiv">
           <div id="alert-success"></div>
           <h4>Register for an account</h4>
           <form id="register-form" method="post" action="register.php">
@@ -75,7 +87,9 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
             </div>
           </form>
         </div>
+        
       </div>
+      
     </div>
     <script src="/js/register.js"></script>
   </body>

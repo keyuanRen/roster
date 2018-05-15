@@ -10,7 +10,7 @@ include("autoloader.php");
         <?php include('includes/navbar.php'); ?>
         
         <div>
-            <img class="managerBanner" src="images/carousel3.jpg">
+            <img class="managerBanner" src="images/banner1.jpg">
         </div> 
         
         <form>

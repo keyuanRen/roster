@@ -10,6 +10,9 @@ class Account extends Database{
     if( strlen( trim($username) ) < 4 ){
       $errors["username"] = "must be at least 4 characters";
     }
+    if( strlen( $username ) > 8){
+       $errors["username"] = "must be max 8 characters";
+    }
     if( $this -> checkUserName($username) ){
       $errors["username"] = $errors["username"] . " " . "username already used";
     }

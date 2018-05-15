@@ -1,13 +1,39 @@
 .carousel-inner {
   width: 100%;
-  height: 500px !important; }
+  max-height: 800px; }
 
 .managerBanner{
   width:100%;
-  height:600px;
+  max-height:600px;
 }
 /*?????????????????????? why css doesn't work for changing my manager page banner size????*/
 /*should i remove the custom.scss and keep the custom.css*/
+
+.logoBanner{
+  display: block;
+  margin: 10px auto;
+}
+
+.settingForm{
+  text-align:center;
+}
+
+.item { 
+  padding: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .logoBanner{
+    width: 70%;
+    height: auto;
+  }
+  .item {
+    text-align: center;
+  }
+  .loginDiv {
+  padding: 10px 100px;
+}
+}
 
 .thumbnails {
   max-width: 90%; }
@@ -29,28 +55,44 @@
   padding: 10px 30px; }
 
 .registerNow {
-  padding: 10px 40px; }
+  padding: 10px 40px; 
+  
+}
+
   .registerNow p {
     font-size: 1.2em;
     text-transform: capitalize;
     font-weight: 700;
     padding: 0;
-    margin: 15px 0; }
+    margin: 15px 0; 
+  }
+  
   .registerNow button {
     padding: 7px 30px;
-    margin: 15px 0; }
+    margin: 15px 0; 
+  }
 
 .registerBtn {
-  text-align: right; }
+  text-align: right; 
+}
+
+.spinner{
+  max-width:30px;
+}
 
 @media screen and (max-width: 767px) {
-  .nav navbar{
-    
+  .navbar-toggler{
+    margin: 0px;
   }
   
   .registerNow {
-    text-align: center; }
+    text-align: center; 
+  }
+  
   button {
-    margin: 15px auto; }
+    margin: 15px auto; 
+  }
+    
   .registerBtn {
-    text-align: center; } }
+    text-align: center; } 
+}
