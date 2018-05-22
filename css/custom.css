@@ -71,6 +71,10 @@
     padding: 7px 30px;
     margin: 15px 0; 
   }
+  
+  .define{
+    text-align: center;
+  }
 
 .registerBtn {
   text-align: right; 

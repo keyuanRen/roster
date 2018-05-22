@@ -4,37 +4,47 @@ class Account extends Database{
   public function __construct(){
     parent::__construct();
   }
-  public function register($username,$email,$password){
+  public function register($account_name,$email,$password,$defineUser,
+  $businessNumber, $companyWebsite, $unitNumber, $streetNumber, $streetName, $suburb, $postcode, $accesscode){
     $errors = array();
+    
     //check the username
-    if( strlen( trim($username) ) < 4 ){
-      $errors["username"] = "must be at least 4 characters";
+    if( strlen( trim($account_name) ) < 4 ){
+      $errors["account_name"] = "must be at least 4 characters";
     }
     if( strlen( $username ) > 8){
-       $errors["username"] = "must be max 8 characters";
+       $errors["account_name"] = "must be max 8 characters";
     }
-    if( $this -> checkUserName($username) ){
-      $errors["username"] = $errors["username"] . " " . "username already used";
+    if( $this -> checkUserName($account_name) ){
+      $errors["account_name"] = $errors["account_name"] . " " . "username already used";
     }
+    
     //validate the email
     if( filter_var($email, FILTER_VALIDATE_EMAIL ) == false ){
       $errors["email"] = "invalid email address";
     }
+    
     //validate the password
     if( strlen( $password ) < 6 ){
       $errors["password"] = "password must be at least 6 characters";
     }
     
+    
     if( count($errors) == 0 ){
-      $query = 'INSERT INTO manager 
-      (username,email,password)
+      $query = 'INSERT INTO accounts 
+      (account_name,email,password,role_id,company_id)
       VALUES
-      ( ?, ? , ? )';
+      ( ?, ?, ?, ?,);
+      Insert into companies
+      (company_name, company_website, unit_number, street_number, street_name, suburb, postcode, access_code)
+      values
+      (?, ?, ?, ?, ?, ?, ?, ?)';
       $statement = $this -> connection -> prepare( $query );
       //hash the password
       $hash = password_hash($password, PASSWORD_DEFAULT );
       //bind parameters
-      $statement -> bind_param('sss', $username, $email, $hash );
+      $statement -> bind_param('sssi', $account_name, $email, $hash, $defineUser,
+      $businessNumber, $companyWebsite, $unitNumber, $streetNumber, $streetName, $suburb, $postcode, $accesscode);
       //execute query
       if( $statement -> execute() ){
         return true;
@@ -51,12 +61,12 @@ class Account extends Database{
     }
     
   }
-  public function checkUserName($username){
+  public function checkUserName($account_name){
     //check if username is already in database
     //return true if exists and false otherwise
-    $query = "SELECT username FROM manager WHERE username = ?";
+    $query = "SELECT account_name FROM accounts WHERE account_name = ?";
     $statement = $this -> connection -> prepare($query);
-    $statement -> bind_param( 's', $username );
+    $statement -> bind_param( 's', $account_name );
     $statement -> execute();
     $result = $statement -> get_result();
     if( $result -> num_rows > 0 ){
@@ -69,9 +79,11 @@ class Account extends Database{
     }
     $statement -> close();
   }
+  
+  
   public function authenticate($credential, $password){
-    $query = "SELECT manager_id,username,email,password 
-    FROM manager WHERE username=? OR email=?";
+    $query = "SELECT account_id,account_name,email,password
+    FROM accounts WHERE account_name=? OR email=?";
     $statement = $this -> connection -> prepare($query);
     $statement -> bind_param('ss',$credential,$credential);
     $statement -> execute();
@@ -84,8 +96,8 @@ class Account extends Database{
         //create session variables to indicate that user
         //has successfully logged in
         session_start(); //start the session
-        $_SESSION["username"] = $row["username"];
-        $_SESSION["manager_id"] = $row["manager_id"];
+        $_SESSION["account_name"] = $row["account_name"];
+        $_SESSION["account_id"] = $row["account_id"];
         $_SESSION["email"] = $row["email"];
         return true;
       }
@@ -97,7 +109,7 @@ class Account extends Database{
     }
     else{
       //there is no account with supplied credentials
-      $this -> errors["manager"] = "there is no account matching credentials supplied";
+      $this -> errors["accounts"] = "there is no account matching credentials supplied";
       return false;
     }
   }

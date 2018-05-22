@@ -8,7 +8,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
   $email = $_POST["email"];
   $password = $_POST["password"];
   $defineUser = $_POST["role"];
-  
+
   $account = new Account();
   $registration = $account -> register( $username, $email, $password, $defineUser );
   
@@ -59,28 +59,39 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
       <div class="row">
         
         <div class="col-md-6 col-sm-6 col-xs-12 item">
-          <img class="logoBanner img-fluid" src="images/logo.png">
+                  
+        <img class="logoBanner img-fluid" src="images/logo.png">
+        
         </div>
         
         <div class="col-md-6 col-sm-6 col-xs-12 item loginDiv">
           <div id="alert-success"></div>
           <h4>Register for an account</h4>
-          
           <form id="register-form" method="post" action="register.php">
-            
-            <div class="form-group define">
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-secondary active" onclick="window.open('registerManager.php','_self');" >
-                  <input type="radio" name="role" value="3" id="option1" autocomplete="off" checked> Manager
-                </label>
-                <label class="btn btn-secondary" onclick="window.open('registerEmployee.php','_self');" >
-                  <input type="radio" name="role" value="4" id="option2" autocomplete="off"> Employee
-                </label>
-              </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input id="username" class="form-control" type="text" name="account_name" placeholder="jenny66">
+              <div id="alert-username"></div>
             </div>
-            
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input id="email" class="form-control" type="email" name="email" placeholder="jenny@example.com">
+              <div id="alert-email"></div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input id="password" class="form-control" type="password" name="password" placeholder="minimum 8 characters">
+              <div id="alert-password"></div>
+            </div>
+            <div class="form-group">
+              <label for="accessCode">Company Access Code</label>
+              <input id="accessCode" class="form-control" type="accessCode" name="accessCode" placeholder="XXXX">
+              <div id="alert-accessCode"></div>
+            </div>
+            <div class="text-center">
+              <button type="submit" name="register-btn" class="btn btn-outline-primary btn-block">Register</button>
+            </div>
           </form>
-          
         </div>
         
       </div>

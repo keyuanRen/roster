@@ -31,10 +31,12 @@ $(document).ready(
     $('#register-form').on('submit', (event) => {
       event.preventDefault();
       //validateForm(event.target);
-      let username = $('input[name="username"]').val();
+      let username = $('input[name="account_name"]').val();
       let email = $('input[name="email"]').val();
       let password = $('input[name="password"]').val();
-      let registerdata = { username: username, email: email, password: password };
+      let defineUser = $('input[name="role"]:checked').val();
+      let registerdata = { account_name: username, email: email, password: password, role: defineUser};
+      console.log(registerdata);
       //add spinner to button
       let spinner = '<img class="spinner" src="/images/gallery.gif">';
       $('button[name="register-btn"]').append(spinner);
@@ -46,6 +48,7 @@ $(document).ready(
           data: registerdata
         })
         .done((response) => {
+          console.log(response);
           //remove spinner from button
           $('button[name="register-btn"] img').remove();
           // remove all alerts
