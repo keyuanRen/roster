@@ -34,6 +34,17 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
 <html>
   <?php include ('includes/head.php'); ?>
   <body>
+    <script type="text/javascript">
+    let code = 0;
+    window.addEventListener('load',generateAccessCode);
+    function generateAccessCode()
+    {
+      let num = Math.random();
+      let accessCode = Math.round(num * 1000000);
+      document.getElementById('accessCode').value=accessCode;
+      code = accessCode;
+    }
+</script>
     <?php include('includes/navbar.php'); ?>
     
     <div class="container content">
@@ -94,35 +105,35 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
                 </div>
                 <div class="col-md-3 mb-3">
                   <label for="streetNumber">Street Number</label>
-                  <input id="streetNumber" class="form-control" type="streetNumber" name="streetNumber" placeholder="StreetNumber" required>
+                  <input id="streetNumber" class="form-control" type="text" name="streetNumber" placeholder="StreetNumber" required>
                 </div>
                 <div class="col-md-3 mb-3">
                   <label for="streetName">Street Name</label>
-                  <input id="streetName" class="form-control" type="streetName" name="streetName" placeholder="StreetName" required>
+                  <input id="streetName" class="form-control" type="text" name="streetName" placeholder="StreetName" required>
                 </div>
               </div>
               <div class="form-row">
                 <div class="col-md-6 mb-3">
                   <label for="suburb">Suburb</label>
-                  <input id="suburb" class="form-control" type="suburb" name="suburb" placeholder="Suburb" required>
+                  <input id="suburb" class="form-control" type="text" name="suburb" placeholder="Suburb" required>
                 </div>
                 <div class="col-md-3 mb-3">
                   <label for="postcode">Postcode</label>
-                  <input id="postcode" class="form-control" type="postcode" name="postcode" placeholder="Postcode" required>
+                  <input id="postcode" class="form-control" type="text" name="postcode" placeholder="Postcode" required>
                 </div>
               </div>
               
               <div class="form-row">
                 <div class="col-md-12 mb-10">
                   <label for="accessCode">Set Your Business Access Code For Your Employee</label>
-                  <input id="accessCode" class="form-control" type="accessCode" name="accessCode" placeholder="Access Code" required>
+                  <input id="accessCode" class="form-control" type="text" name="accessCode" placeholder="Access Code" readonly>
                 </div>
               </div>
               
             </form>
             
             <div class="text-center">
-              <button type="submit" name="register-btn" onclick="window.open('registerManager.php?role=3','_self');"
+              <button type="submit" name="register-btn" onclick="window.open('registerManager.php?role=3&accessCode='+code,'_self');"
               class="btn btn-outline-primary btn-block">Confirm</button>
             </div>
           </form>
@@ -131,7 +142,8 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
       </div>
       
     </div>
-    <script src="/js/register.js"></script>
+    <script src="/js/registerCompany.js"></script>
+    
   </body>
 </html>
 

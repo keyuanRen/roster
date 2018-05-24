@@ -19,12 +19,12 @@ session_start();
             </div>
             <div class="col-sm item bg-muted text-secondary">
               <img src="images/coffeeCreate.jpg" alt="..." class="img-thumbnail">
-              <h2 class="text-left text-sm-center">make your roaster</h2>
+              <h2 class="text-left text-sm-center">make your roster</h2>
               <p class="text-justify">&nbsp;&nbsp;The use of TRoaster can save manager time for making rosater for employee.</br>&nbsp;&nbsp;type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> 
             </div>
             <div class="col-sm item bg-muted text-secondary">
               <img src="images/coffeeShare.jpg" alt="..." class="img-thumbnail">
-              <h2 class="text-left text-sm-right">view your roaster</h2>
+              <h2 class="text-left text-sm-right">view your roster</h2>
               <p class="text-justify">&nbsp;&nbsp;The use of TRoaster allows both manager and employee view the roster graghically.</br>&nbsp;&nbsp;type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> 
             </div>
           </div>

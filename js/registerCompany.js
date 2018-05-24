@@ -31,12 +31,15 @@ $(document).ready(
     $('#register-form').on('submit', (event) => {
       event.preventDefault();
       //validateForm(event.target);
-      let username = $('input[name="account_name"]').val();
-      let email = $('input[name="email"]').val();
-      let password = $('input[name="password"]').val();
-      let defineUser = $('input[name="role"]').val();//:checked
-      let accesscode = $('input[name="accessCode"]').val();
-      let registerdata = { account_name: username, email: email, password: password, role: defineUser, accessCode: accesscode};
+      let companyName = $('input[name="companyName"]').val();
+      let companyWebsite = $('input[name="companyWebsite"]').val();
+      let unitNumber = $('input[name="unitNumber"]').val();
+      let streetNumber = $('input[name="streetNumber"]').val();
+      let suburb = $('input[name="suburb"]').val();
+      let postcode = $('input[name="postcode"]').val();
+      let accessCode = $('input[name="accessCode"]').val();
+      let registerdata = { companyName: companyName, companyWebsite: companyWebsite, unitNumber: unitNumber, streetNumber: streetNumber, 
+      suburb: suburb, postcode: postcode, accessCode: accessCode};
       console.log(registerdata);
       //add spinner to button
       let spinner = '<img class="spinner" src="/images/gallery.gif">';
@@ -57,17 +60,26 @@ $(document).ready(
           removeAlerts();
           if (response.success == false) {
             //check for errors in different fields
-            if (response.errors.username) {
-              showAlert('alert-template','warning','alert-username',response.errors.username);
+            if (response.errors.companyName) {
+              showAlert('alert-template','warning','alert-companyName',response.errors.companyName);
             }
-            if (response.errors.email) {
-              showAlert('alert-template','warning','alert-email',response.errors.email);
+            if (response.errors.companyWebsite) {
+              showAlert('alert-template','warning','alert-companyWebsite',response.errors.companyWebsite);
             }
-            if (response.errors.password) {
-              showAlert('alert-template','warning','alert-password',response.errors.password);
+            if (response.errors.unitNumber) {
+              showAlert('alert-template','warning','alert-unitNumber',response.errors.unitNumber);
             }
-            if (response.errors.accesscode) {
-              showAlert('alert-template','warning','alert-accesscode',response.errors.accesscode);
+            if (response.errors.streetNumber) {
+              showAlert('alert-template','warning','alert-streetNumber',response.errors.streetNumber);
+            }
+            if (response.errors.suburb) {
+              showAlert('alert-template','warning','alert-suburb',response.errors.suburb);
+            }
+            if (response.errors.postcode) {
+              showAlert('alert-template','warning','alert-postcode',response.errors.postcode);
+            }
+            if (response.errors.accessCode) {
+              showAlert('alert-template','warning','alert-accessCode',response.errors.accessCode);
             }
           }
           else

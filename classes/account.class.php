@@ -87,7 +87,7 @@ class Account extends Database{
     }
     
     if( count($errors) == 0 ){
-      $query = 'Insert into companies
+      $query = 'INSERT INTO companies
       (company_name, company_website, unit_number, street_number, street_name, suburb, postcode, access_code)
       values
       (?, ?, ?, ?, ?, ?, ?, ?)';
@@ -95,7 +95,7 @@ class Account extends Database{
       //hash the password
       $hash = password_hash($password, PASSWORD_DEFAULT );
       //bind parameters
-      $statement -> bind_param('ssiissii',$businessName, $companyWebsite, $unitNumber, $streetNumber, $streetName, $suburb, $postcode, $accesscode);
+      $statement -> bind_param('ssssssss',$businessName, $companyWebsite, $unitNumber, $streetNumber, $streetName, $suburb, $postcode, $accesscode);
       //execute query
       if( $statement -> execute() ){
         return true;
@@ -114,9 +114,9 @@ class Account extends Database{
   }
   
   public function checkCompanyName($companyName){
-    //check if username is already in database
+    //check if company name is already in database
     //return true if exists and false otherwise
-    $query = "SELECT company_name FROM companies WHERE company_name = ?";
+    $query = "SELECT company_name FROM companies WHERE company_name = LOWER( ? )";
     $statement = $this -> connection -> prepare($query);
     $statement -> bind_param( 's', $companyName );
     $statement -> execute();
