@@ -9,19 +9,10 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     $email = $_POST["email"];
     $password = $_POST["password"];
     $defineUser = $_POST["role"];
-    
-    $businessNumber = $_POST["businessNumber"];
-    $companyWebsite = $_POST["companyWebsite"];
-    $unitNumber = $_POST["unitNumber"];
-    $streetNumber = $_POST["streetNumber"];
-    $streetName = $_POST["streetName"];
-    $suburb = $_POST["suburb"];
-    $postcode = $_POST["postcode"];
-    $accesscode = $_POST["accesscode"];
+    $accesscode = $_POST["accessCode"];
       
     //send data to account -> register
-    $registration = $class -> register($account_name, $email, $password, $defineUser,
-    $businessNumber, $companyWebsite, $unitNumber, $streetNumber, $streetName, $suburb, $postcode, $accesscode);
+    $registration = $class -> register($account_name, $email, $password, $defineUser, $accesscode);
     
     $response = array();
     $errors = array();

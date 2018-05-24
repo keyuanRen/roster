@@ -1,6 +1,8 @@
 <?php
 include('autoloader.php');
 
+$role = $_GET["role"];
+
 //check for POST request
 if( $_SERVER['REQUEST_METHOD'] == 'POST'){
   //receive variables from form
@@ -8,9 +10,10 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
   $email = $_POST["email"];
   $password = $_POST["password"];
   $defineUser = $_POST["role"];
+  $accesscode = $_POST["accessCode"];
 
   $account = new Account();
-  $registration = $account -> register( $username, $email, $password, $defineUser );
+  $registration = $account -> register( $username, $email, $password, $defineUser, $accesscode);
   
   $success = array();
   $errors = array();
@@ -88,6 +91,9 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
               <input id="accessCode" class="form-control" type="accessCode" name="accessCode" placeholder="XXXX">
               <div id="alert-accessCode"></div>
             </div>
+            
+            <input name="role" type="hidden" value="<?php echo $role; ?>"
+            
             <div class="text-center">
               <button type="submit" name="register-btn" class="btn btn-outline-primary btn-block">Register</button>
             </div>

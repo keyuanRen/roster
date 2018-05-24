@@ -64,3 +64,92 @@
 [22-May-2018 07:32:39 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
 [22-May-2018 07:32:39 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:13
 [22-May-2018 07:32:39 UTC] PHP   3. Account->checkUserName() /home/ubuntu/workspace/classes/account.class.php:17
+[24-May-2018 03:08:34 UTC] PHP Fatal error:  Cannot redeclare Account::checkUserName() in /home/ubuntu/workspace/classes/account.class.php on line 115
+[24-May-2018 03:08:34 UTC] PHP Stack trace:
+[24-May-2018 03:08:34 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 03:08:34 UTC] PHP   2. spl_autoload_call() /home/ubuntu/workspace/ajax/register.ajax.php:4
+[24-May-2018 03:08:34 UTC] PHP   3. loadClass() /home/ubuntu/workspace/ajax/register.ajax.php:4
+[24-May-2018 03:30:04 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 43
+[24-May-2018 03:30:04 UTC] PHP Stack trace:
+[24-May-2018 03:30:04 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 03:30:04 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 03:56:34 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 03:56:34 UTC] PHP Stack trace:
+[24-May-2018 03:56:34 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 03:56:34 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 04:07:07 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 04:07:07 UTC] PHP Stack trace:
+[24-May-2018 04:07:07 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 04:07:07 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 04:07:32 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 04:07:32 UTC] PHP Stack trace:
+[24-May-2018 04:07:32 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 04:07:32 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 04:09:39 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 04:09:39 UTC] PHP Stack trace:
+[24-May-2018 04:09:39 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 04:09:39 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 04:11:38 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 04:11:38 UTC] PHP Stack trace:
+[24-May-2018 04:11:38 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 04:11:38 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 04:16:08 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 04:16:08 UTC] PHP Stack trace:
+[24-May-2018 04:16:08 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 04:16:08 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 04:18:36 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 04:18:36 UTC] PHP Stack trace:
+[24-May-2018 04:18:36 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 04:18:36 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 04:20:23 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 04:20:23 UTC] PHP Stack trace:
+[24-May-2018 04:20:23 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 04:20:23 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 06:50:22 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 06:50:22 UTC] PHP Stack trace:
+[24-May-2018 06:50:22 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 06:50:22 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 07:03:16 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 07:03:17 UTC] PHP Stack trace:
+[24-May-2018 07:03:17 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 07:03:17 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 07:05:08 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 07:05:08 UTC] PHP Stack trace:
+[24-May-2018 07:05:08 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 07:05:08 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 07:06:47 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 07:06:47 UTC] PHP Stack trace:
+[24-May-2018 07:06:47 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 07:06:47 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 07:09:15 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 07:09:15 UTC] PHP Stack trace:
+[24-May-2018 07:09:15 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 07:09:15 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 07:11:03 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 07:11:03 UTC] PHP Stack trace:
+[24-May-2018 07:11:03 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 07:11:03 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 07:12:56 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 07:12:56 UTC] PHP Stack trace:
+[24-May-2018 07:12:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 07:12:56 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 07:17:37 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 07:17:37 UTC] PHP Stack trace:
+[24-May-2018 07:17:37 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 07:17:37 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 08:32:16 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 08:32:16 UTC] PHP Stack trace:
+[24-May-2018 08:32:16 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 08:32:16 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 08:33:36 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 08:33:36 UTC] PHP Stack trace:
+[24-May-2018 08:33:36 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 08:33:36 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 08:36:52 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 08:36:52 UTC] PHP Stack trace:
+[24-May-2018 08:36:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 08:36:52 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 09:14:00 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 09:14:00 UTC] PHP Stack trace:
+[24-May-2018 09:14:00 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 09:14:00 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15

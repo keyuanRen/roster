@@ -4,8 +4,7 @@ class Account extends Database{
   public function __construct(){
     parent::__construct();
   }
-  public function register($account_name,$email,$password,$defineUser,
-  $businessNumber, $companyWebsite, $unitNumber, $streetNumber, $streetName, $suburb, $postcode, $accesscode){
+  public function register($account_name,$email,$password,$defineUser,$accesscode){
     $errors = array();
     
     //check the username
@@ -31,20 +30,16 @@ class Account extends Database{
     
     
     if( count($errors) == 0 ){
-      $query = 'INSERT INTO accounts 
+      $query = '
+      INSERT INTO accounts 
       (account_name,email,password,role_id,company_id)
       VALUES
-      ( ?, ?, ?, ?,);
-      Insert into companies
-      (company_name, company_website, unit_number, street_number, street_name, suburb, postcode, access_code)
-      values
-      (?, ?, ?, ?, ?, ?, ?, ?)';
+      ( ?, ?, ?,?, (select company_id from compaies where access_code = '.$access_code.' limit 1))';
       $statement = $this -> connection -> prepare( $query );
       //hash the password
       $hash = password_hash($password, PASSWORD_DEFAULT );
       //bind parameters
-      $statement -> bind_param('sssi', $account_name, $email, $hash, $defineUser,
-      $businessNumber, $companyWebsite, $unitNumber, $streetNumber, $streetName, $suburb, $postcode, $accesscode);
+      $statement -> bind_param('sssi', $account_name, $email, $hash, $defineUser);
       //execute query
       if( $statement -> execute() ){
         return true;
@@ -75,6 +70,63 @@ class Account extends Database{
     }
     else{
       //username does not exist
+      return false;
+    }
+    $statement -> close();
+  }
+  
+  public function registerCompany($companyName, $companyWebsite, $unitNumber, $streetNumber, $streetName, $suburb, $postcode, $accesscode){
+    $errors = array();
+    
+    //check the username
+    if( strlen( trim($companyName) ) < 4 ){
+      $errors["companyName"] = "must be at least 4 characters";
+    }
+    if( $this -> checkCompanyName($companyName) ){
+      $errors["companyName"] = $errors["companyName"] . " " . "companyName already used";
+    }
+    
+    if( count($errors) == 0 ){
+      $query = 'Insert into companies
+      (company_name, company_website, unit_number, street_number, street_name, suburb, postcode, access_code)
+      values
+      (?, ?, ?, ?, ?, ?, ?, ?)';
+      $statement = $this -> connection -> prepare( $query );
+      //hash the password
+      $hash = password_hash($password, PASSWORD_DEFAULT );
+      //bind parameters
+      $statement -> bind_param('ssiissii',$businessName, $companyWebsite, $unitNumber, $streetNumber, $streetName, $suburb, $postcode, $accesscode);
+      //execute query
+      if( $statement -> execute() ){
+        return true;
+      }
+      else{
+        //database error
+        return false;
+      }
+    }
+    else{
+      //process errors
+      $this -> errors = $errors;
+      return false;
+    }
+    
+  }
+  
+  public function checkCompanyName($companyName){
+    //check if username is already in database
+    //return true if exists and false otherwise
+    $query = "SELECT company_name FROM companies WHERE company_name = ?";
+    $statement = $this -> connection -> prepare($query);
+    $statement -> bind_param( 's', $companyName );
+    $statement -> execute();
+    $result = $statement -> get_result();
+    if( $result -> num_rows > 0 ){
+      //company exists
+      return true;
+    }
+    else{
+      //company does not exist
       return false;
     }
     $statement -> close();

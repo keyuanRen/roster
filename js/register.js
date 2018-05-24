@@ -34,8 +34,9 @@ $(document).ready(
       let username = $('input[name="account_name"]').val();
       let email = $('input[name="email"]').val();
       let password = $('input[name="password"]').val();
-      let defineUser = $('input[name="role"]:checked').val();
-      let registerdata = { account_name: username, email: email, password: password, role: defineUser};
+      let defineUser = $('input[name="role"]').val();//:checked
+      let accesscode = $('input[name="accessCode"').val();
+      let registerdata = { account_name: username, email: email, password: password, role: defineUser, accessCode: accesscode};
       console.log(registerdata);
       //add spinner to button
       let spinner = '<img class="spinner" src="/images/gallery.gif">';
@@ -64,6 +65,9 @@ $(document).ready(
             }
             if (response.errors.password) {
               showAlert('alert-template','warning','alert-password',response.errors.password);
+            }
+            if (response.errors.accesscode) {
+              showAlert('alert-template','warning','alert-accesscode',response.errors.accesscode);
             }
           }
           else

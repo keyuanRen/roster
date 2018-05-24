@@ -24,33 +24,62 @@ include("autoloader.php");
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">EmployeeName</th>
+                <th scope="col">Work Position</th>
+                <th scope="col">WorkingDay</th>
                 <th scope="col">StartTime</th>
                 <th scope="col">FinishTime</th>
-                <th scope="col">WorkingDay</th>
+                
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>9:00am</td>
-                <td>12:00pm</td>
-                <td>Monday</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>12:00pm</td>
-                <td>5:00pm</td>
-                <td>Thurday</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Tonny</td>
-                <td>9:00am</td>
-                <td>5:00pm</td>
-                <td>Friday</td>
-              </tr>
+              
+              <?php
+                //this is the database user that the website will use
+ 
+                $host  = getenv('dbhost');
+                $password = getenv('dbpassword');
+                $username  = getenv('dbuser');
+                $database  = getenv('database');
+                
+                // Create connection
+                $connection = new mysqli($host, $username,$password , $database);
+          
+                // Check connection
+                // if ($connection->connect_error) {
+                //     die("Connection failed: " . $connection->connect_error);
+                // } 
+                // echo "Connected successfully (".$connection->host_info.")";
+
+              
+                $timestart = "SELECT * FROM shifts inner join accounts 
+                on shifts.account_id = accounts.account_id
+                and role_id = 3";
+  
+              
+                if ($result=mysqli_query($connection,$timestart))
+                {
+                 // Fetch one and one row
+                  while ($row=mysqli_fetch_row($result))
+                  {
+                    echo "<tr>";
+                    echo "<th scope='row'>$row[0]</th>";
+                    printf ("<td>%s</td>",$row[8]);
+                    printf ("<td>%s</td>",$row[3]);
+                    printf ("<td>%s</td>",$row[4]);
+                    printf ("<td>%s</td>",$row[5]);
+                    printf ("<td>%s</td>",$row[6]);
+                    echo"</tr>";
+                      
+                  }
+                    
+                  // Free result set
+                  mysqli_free_result($result);
+                  }
+                  
+                 mysqli_close($connection);
+                     
+                ?>
+                    
             </tbody>
           </table>
           
