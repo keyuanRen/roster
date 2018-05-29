@@ -1,8 +1,11 @@
 <?php
 include('autoloader.php');
 
+//receive variables from previous page
+
 $role = $_GET["role"];
 $code = $_GET["accessCode"];
+$companyId = $_GET["companyId"];
 
 //check for POST request
 if( $_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -74,25 +77,35 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
           <h4>Register</h4>
           <h5>Define Your Account</h5>
           
-          <form id="register-form" method="post" action="register.php">
+          <form id="manager-register-form" method="post" action="registerManager.php" novalidate>
             <div class="form-group">
               <label for="username">Username</label>
-              <input id="username" class="form-control" type="text" name="account_name" placeholder="jenny66">
-              <div id="alert-username"></div>
+              <input id="username" class="form-control" type="text" name="account_name" placeholder="jenny66" required>
+              <!--<div id="alert-username"></div>-->
+              <div class="invalid-feedback">
+                Please enter a username between 4 and 16 characters
+              </div>
             </div>
             <div class="form-group">
               <label for="email">Email address</label>
-              <input id="email" class="form-control" type="email" name="email" placeholder="jenny@example.com">
-              <div id="alert-email"></div>
+              <input id="email" class="form-control" type="email" name="email" placeholder="jenny@example.com" required>
+              <!--<div id="alert-email"></div>-->
+              <div class="invalid-feedback">
+                Please enter a valid email address
+              </div>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input id="password" class="form-control" type="password" name="password" placeholder="minimum 8 characters">
-              <div id="alert-password"></div>
+              <input id="password" class="form-control" type="password" name="password" placeholder="minimum 8 characters" required>
+              <!--<div id="alert-password"></div>-->
+              <div class="invalid-feedback">
+                Please enter a password of 8 characters or longer
+              </div>
             </div>
             
-            <input name="role" type="hidden" value="<?php echo $role; ?>">
+            <input name="roleId" type="hidden" value="<?php echo $role; ?>">
             <input name="accessCode" type="hidden" value="<?php echo $code; ?>">
+            <input name="companyId" type="hidden" value="<?php echo $companyId; ?>">
             
             <div class="text-center">
               <button type="submit" name="register-btn" class="btn btn-outline-primary btn-block">Register</button>
@@ -103,8 +116,9 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
       </div>
       
     </div>
-    <script src="/js/register.js"></script>
+    <script src="/js/registerManager.js"></script>
   </body>
+  <?php include ('includes/footer.php'); ?>
 </html>
 
 <template id="alert-template">

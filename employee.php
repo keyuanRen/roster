@@ -1,5 +1,6 @@
 <?php 
 include("autoloader.php");
+session_start();
 ?>
 
 
@@ -9,9 +10,10 @@ include("autoloader.php");
     <body>
         <?php include('includes/navbar.php'); ?>
         
-        <!--<div>-->
-        <!--    <img class="managerBanner" src="images/banner2.jpg">-->
-        <!--</div> -->
+        <div>
+            <img class="managerBanner" src="images/banner4.jpg">
+        </div>
+        
         <form>
           
           <div>
@@ -81,8 +83,6 @@ include("autoloader.php");
         </form>
           
     </body>
-    <footer>
-      <img class="mw-100 w-100 h-1" style="height: 10vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfxkwboagJGTLg09eNC9ni7h1CPQcwNIMJSMdenoLY3XF78QtcoQ" alt="Max-width 100%">
-    </footer>
+    <?php include ('includes/footer.php'); ?>
 </html>
 

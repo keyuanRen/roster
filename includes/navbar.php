@@ -11,8 +11,8 @@
   -->
    <div class="navbar-text d-flex justify-content-end flex-fill w-md-50 order-2">
       <?php
-      if( $_SESSION["username"] ){
-        $user = $_SESSION["username"];
+      if( $_SESSION["account_name"] ){
+        $user = $_SESSION["account_name"];
         echo "Hello ".$user;
       }
       ?>
@@ -40,31 +40,53 @@
       // }
       ?>
     
-    
-      <li class="nav-item active">
-        <a class="nav-link" href="register.php">Register <span class="sr-only">(current)</span></a>
+      <?php
+      if($_SESSION["account_name"] == null)
+      {
+      echo "
+      <li class=\"nav-item active\">
+        <a class=\"nav-link\" href=\"register.php\">Register <span class=\"sr-only\">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.php">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="employee.php">Employee</a>
-      </li>
+      <li class=\"nav-item\">
+        <a class=\"nav-link\" href=\"login.php\">Login</a>
+      </li>";
+      }
+      ?>
+      <?php
+      if($_SESSION["role"] == '3')//employee
+      {
+      echo "<li class=\"nav-item\">
+        <a class=\"nav-link\" href=\"employee.php\">Your Roster</a>
+      </li>";
+      }
+      ?>
       <!--<li class="nav-item">-->
       <!--  <a class="nav-link" href="managerSetting.php">Manager</a>-->
       <!--</li>-->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <?php
+      if( $_SESSION['role'] == null ){
+      echo "<li class=\"nav-item dropdown\">
+        <a class=\"nav-link dropdown-toggle\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
           Manager
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="managerRoster.php">managerRoster</a>
-          <a class="dropdown-item" href="managerSetting.php">managerSetting</a>
-          <a class="dropdown-item" href="managerConfirm.php">managerConfirm</a>
-      </li>
+        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
+          <a class=\"dropdown-item\" href=\"managerRoster.php\">managerRoster</a>
+          <a class=\"dropdown-item\" href=\"managerSetting.php\">managerSetting</a>
+          <a class=\"dropdown-item\" href=\"managerConfirm.php\">managerConfirm</a>
+      </li>";
+      }
+      ?>
       <li class="nav-item">
         <a class="nav-link disabled" href="https://coffee-manager-keyuan123.c9users.io/phpmyadmin">Database</a>
       </li>
+      <?php
+      if($_SESSION["account_name"])
+      {
+      echo "<li class=\"nav-item\">
+        <a class=\"nav-link\" href=\"logout.php\">LogOut</a>
+      </li>";
+      }
+      ?>
     </ul>
     <!--
     <form class="form-inline my-2 my-lg-0">

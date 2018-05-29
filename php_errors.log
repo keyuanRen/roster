@@ -169,3 +169,46 @@
 [24-May-2018 11:08:53 UTC] PHP Stack trace:
 [24-May-2018 11:08:53 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
 [24-May-2018 11:08:53 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 13:19:10 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 13:19:10 UTC] PHP Stack trace:
+[24-May-2018 13:19:10 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 13:19:10 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 13:19:48 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 13:19:48 UTC] PHP Stack trace:
+[24-May-2018 13:19:48 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 13:19:48 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 17:21:03 UTC] PHP Parse error:  syntax error, unexpected '$companyName' (T_VARIABLE) in /home/ubuntu/workspace/classes/company.class.php on line 86
+[24-May-2018 17:21:03 UTC] PHP Stack trace:
+[24-May-2018 17:21:03 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/registercompany.ajax.php:0
+[24-May-2018 17:21:03 UTC] PHP   2. spl_autoload_call() /home/ubuntu/workspace/ajax/registercompany.ajax.php:8
+[24-May-2018 17:21:03 UTC] PHP   3. loadClass() /home/ubuntu/workspace/ajax/registercompany.ajax.php:8
+[24-May-2018 17:23:52 UTC] PHP Parse error:  syntax error, unexpected '$companyName' (T_VARIABLE) in /home/ubuntu/workspace/classes/company.class.php on line 86
+[24-May-2018 17:23:52 UTC] PHP Stack trace:
+[24-May-2018 17:23:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/registercompany.ajax.php:0
+[24-May-2018 17:23:52 UTC] PHP   2. spl_autoload_call() /home/ubuntu/workspace/ajax/registercompany.ajax.php:8
+[24-May-2018 17:23:52 UTC] PHP   3. loadClass() /home/ubuntu/workspace/ajax/registercompany.ajax.php:8
+[24-May-2018 17:24:26 UTC] PHP Fatal error:  Call to undefined function cleanString() in /home/ubuntu/workspace/classes/company.class.php on line 27
+[24-May-2018 17:24:26 UTC] PHP Stack trace:
+[24-May-2018 17:24:26 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/registercompany.ajax.php:0
+[24-May-2018 17:24:26 UTC] PHP   2. Company->create() /home/ubuntu/workspace/ajax/registercompany.ajax.php:19
+[24-May-2018 23:07:30 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 23:07:30 UTC] PHP Stack trace:
+[24-May-2018 23:07:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 23:07:30 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[24-May-2018 23:11:19 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[24-May-2018 23:11:19 UTC] PHP Stack trace:
+[24-May-2018 23:11:19 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[24-May-2018 23:11:19 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[25-May-2018 11:12:27 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 42
+[25-May-2018 11:12:27 UTC] PHP Stack trace:
+[25-May-2018 11:12:27 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/register.ajax.php:0
+[25-May-2018 11:12:27 UTC] PHP   2. Account->register() /home/ubuntu/workspace/ajax/register.ajax.php:15
+[27-May-2018 13:38:49 UTC] PHP Fatal error:  Class 'Manager' not found in /home/ubuntu/workspace/ajax/registermanager.ajax.php on line 14
+[27-May-2018 13:38:49 UTC] PHP Stack trace:
+[27-May-2018 13:38:49 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/registermanager.ajax.php:0
+[27-May-2018 13:39:03 UTC] PHP Fatal error:  Class 'Manager' not found in /home/ubuntu/workspace/ajax/registermanager.ajax.php on line 14
+[27-May-2018 13:39:03 UTC] PHP Stack trace:
+[27-May-2018 13:39:03 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/registermanager.ajax.php:0
+[27-May-2018 13:40:10 UTC] PHP Fatal error:  Class 'Manager' not found in /home/ubuntu/workspace/ajax/registermanager.ajax.php on line 14
+[27-May-2018 13:40:10 UTC] PHP Stack trace:
+[27-May-2018 13:40:10 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/registermanager.ajax.php:0

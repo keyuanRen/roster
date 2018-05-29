@@ -105,6 +105,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
     </div>
     <script src="/js/register.js"></script>
   </body>
+  <?php include ('includes/footer.php'); ?>
 </html>
 
 <template id="alert-template">

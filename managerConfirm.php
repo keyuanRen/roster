@@ -1,5 +1,6 @@
 <?php 
 include("autoloader.php");
+session_start();
 
 ?>
 
@@ -92,7 +93,5 @@ include("autoloader.php");
         <button type="submit" class="btn btn-primary float-right">Confirm Setting</button>
           
     </body>
-    <footer>
-      <img class="mw-100 w-100 h-1" style="height: 10vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfxkwboagJGTLg09eNC9ni7h1CPQcwNIMJSMdenoLY3XF78QtcoQ" alt="Max-width 100%">
-    </footer>
+    <?php include ('includes/footer.php'); ?>
 </html>
