@@ -1,6 +1,7 @@
 <?php
 class Manager extends Account{
     public $manager_id;
+    public $errors = array();
     public function __construct(){
         parent::__construct();
     }
@@ -35,5 +36,23 @@ class Manager extends Account{
            return false;
        }
     }
+    protected function getManagerId( $account_id ){
+      if(!$account_id){
+        $this -> errors['account_id'] = 'missing account id';
+        return false;
+      }
+      $query = 'SELECT manager_id FROM manager WHERE account_id = ?';
+      $statement = $this -> connection -> prepare($query);
+      $statement -> bind_param( 'i' , $account_id );
+      $statement -> execute();
+      $result = $statement -> get_result();
+      if( $result -> num_rows > 0 ){
+        $row = $result -> fetch_assoc();
+        return $row['manager_id'];
+      }
+      else{
+        return false;
+      }
+  }
 }
 ?>

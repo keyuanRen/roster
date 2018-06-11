@@ -6,15 +6,15 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
     $email = $_POST['email'];
     $password = $_POST['password'];
     $roleId = intval($_POST['roleId']);
-    $companyId = intval($_POST['companyId']);
+    $access_code = $_POST['accessCode'];
     
     $response = array();
     $errors = array();
     
     //create manager class
-    $manager = new Manager();
+    $employee = new Employee();
     //create manager account
-    $creation = $manager -> create($account_name,$email,$password,$roleId,$companyId);
+    $creation = $employee -> create($account_name,$email,$password,$roleId,$access_code);
     
     if( $creation == true ){
         $response['success'] = true;
@@ -22,7 +22,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
     else{
         $response['success'] = false;
         $response['errors'] = $manager -> errors;
-        var_dump($manager);
+        var_dump($employee);
     }
     echo json_encode($response);
 }

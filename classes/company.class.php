@@ -30,9 +30,9 @@ class Company extends Database{
         //CHECK COMPANY WEBSITE
         //convert to lowercase
         $url = strtolower( $companyWebsite );
-        //get first seven characters
+        //get first seven characters eg http://
         $http = substr($url,0,7);
-        //get first eight characters
+        //get first eight characters eg https://
         $https = substr($url,0,8);
         //if it does not contain http:// or https://
         if( $http !== 'http://' && $https !== 'https://'){
@@ -121,5 +121,46 @@ class Company extends Database{
             return true;
         }
     }
+    public function getCompanyIdByAccessCode( $access_code ){
+        //turn access code to upper case
+        $access_code = strtoupper($access_code);
+        $query = 'SELECT company_id FROM companies WHERE access_code = ?';
+        $statement = $this -> connection -> prepare($query);
+        $statement -> bind_param( 's' , $access_code );
+        $statement -> execute();
+        $result = $statement -> get_result();
+        if( $result -> num_rows > 0 ){
+            $row = $result -> fetch_assoc();
+            return $row['company_id'];
+        }
+        else{
+            return false;
+        }
+    }
+    public function getCompanyById( $company_id ){
+        $query = 'SELECT 
+        company_id, 
+        company_name,
+        company_website,
+        unit_number,
+        street_number,
+        street_name,
+        suburb,
+        postcode,
+        access_code
+        FROM companies 
+        WHERE company_id = ?';
+        $statement = $this -> connection -> prepare( $query );
+        $statement -> bind_param( 'i' , $company_id );
+        $statement -> execute();
+        $result = $statement -> get_result();
+        
+        if( $result -> num_rows > 0 ){
+            $company = $result -> fetch_assoc();
+            return $company;
+        }
+        else{
+            return false;
+        }
+    }
 }
-?>

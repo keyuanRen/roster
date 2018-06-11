@@ -1,19 +1,26 @@
 <?php
 include('autoloader.php');
+session_start();
 
 //handle POST request
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
   $credentials=$_POST["credentials"];
   $password=$_POST["password"];
-  echo $credentials. " " . $password;
+  
   //create instance of account class
   $account=new Account();
   $login=$account->authenticate($credentials,$password);
   if($login == true)
   {
     //all good
-    $destination = "index.php";
+    //check user's role
+    if( $account -> role_id == 4 ){
+      $destination = "/employee.php";
+    }
+    else{
+      $destination = "/index.php";
+    }
     header("location: $destination");
   }
   else

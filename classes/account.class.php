@@ -1,19 +1,21 @@
 <?php
 class Account extends Database{
   public $account_id;
+  public $role_id;
+  public $company_id;
   public $errors = array();
   public function __construct(){
     parent::__construct();
   }
-  public function register($account_name,$email,$password,$roleId,$companyId){
+  public function register($account_name,$email,$password,$roleId, $companyId){
     $errors = array();
-
+    
     //check the username
     if( strlen( trim($account_name) ) < 4 ){
       $errors["account_name"] = "must be at least 4 characters";
     }
     if( strlen( $username ) > 8){
-      $errors["account_name"] = "must be max 8 characters";
+      $errors["account_name"] = "max 8 characters";
     }
     if( $this -> checkUserName($account_name) ){
       $errors["account_name"] = $errors["account_name"] . " " . "username already used";
@@ -32,13 +34,21 @@ class Account extends Database{
     }
     
     //check if role_id is numeric
-    if( strlen( (string) $roleId ) == 0 || is_int($roleId) == false ){
-      $errors["role"] = "role id must be a number";
+    if( strlen( (string) $roleId ) == 0 ){ 
+      $errors["role"] = "role id length error";
+    }
+    
+    if( ctype_digit( (string) $roleId) == false ){
+      $errors["role"] = "role id digit error $roleId";
     }
     
     //check if company_id is numeric
-    if( strlen( (string) $companyId ) == 0 || is_int($companyId) == false ){
-      $errors["company"] = "company id must be a number";
+    if( strlen( (string) $companyId ) == 0 ){
+      $errors["company"] = "company id length error";
+    }
+    
+    if( ctype_digit( (string) $companyId) == false ){
+      $errors["company"] = "company id digit error $companyId";
     }
     //if no errors, insert into database
     if( count($errors) == 0 ){
@@ -55,6 +65,7 @@ class Account extends Database{
       //execute query
       if( $statement -> execute() ){
         $this -> account_id = $this -> connection -> insert_id;
+        $this -> role_id = $roleId;
         return true;
       }
       else{
@@ -170,7 +181,7 @@ class Account extends Database{
   
   
   public function authenticate($credential, $password){
-    $query = "SELECT account_id,account_name,email,password,role_id
+    $query = "SELECT account_id,account_name,email,password,role_id,company_id
     FROM accounts WHERE account_name=? OR email=?";
     $statement = $this -> connection -> prepare($query);
     $statement -> bind_param('ss',$credential,$credential);
@@ -186,8 +197,11 @@ class Account extends Database{
         session_start(); //start the session
         $_SESSION["account_name"] = $row["account_name"];
         $_SESSION["account_id"] = $row["account_id"];
-        $_SESSION["email"] = $row["email"];
         $_SESSION["role"] = $row["role_id"];
+        $_SESSION["company_id"] = $row["company_id"];
+        //set class properties
+        $this -> company_id = $row["company_id"];
+        $this -> role_id = $row["role_id"];
         return true;
       }
       else{

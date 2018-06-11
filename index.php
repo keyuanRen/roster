@@ -2,7 +2,6 @@
 include("autoloader.php");
 session_start();
 
-print_r($_SESSION);
 ?>
 
 <!doctype html>
@@ -11,7 +10,7 @@ print_r($_SESSION);
     <body>
       <?php include('includes/navbar.php'); ?>
       <?php include('includes/carousel.php'); ?>
-        
+      
         <div class="container thumbnails">
           <div class="row">
             <div class="col-sm item bg-muted text-secondary">

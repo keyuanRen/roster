@@ -1,5 +1,6 @@
 <?php
 include('autoloader.php');
+session_start();
 
 //receive variables from previous page
 

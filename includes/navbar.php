@@ -53,7 +53,7 @@
       }
       ?>
       <?php
-      if($_SESSION["role"] == '3')//employee
+      if($_SESSION["role"] == 4)//employee
       {
       echo "<li class=\"nav-item\">
         <a class=\"nav-link\" href=\"employee.php\">Your Roster</a>
@@ -64,15 +64,14 @@
       <!--  <a class="nav-link" href="managerSetting.php">Manager</a>-->
       <!--</li>-->
       <?php
-      if( $_SESSION['role'] == null ){
+      if( $_SESSION['role'] == "3" ){//manager
       echo "<li class=\"nav-item dropdown\">
         <a class=\"nav-link dropdown-toggle\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
           Manager
         </a>
         <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
           <a class=\"dropdown-item\" href=\"managerRoster.php\">managerRoster</a>
-          <a class=\"dropdown-item\" href=\"managerSetting.php\">managerSetting</a>
-          <a class=\"dropdown-item\" href=\"managerConfirm.php\">managerConfirm</a>
+          <a class=\"dropdown-item\" href=\"managerConfirm.php\">SetYourRoster</a>
       </li>";
       }
       ?>

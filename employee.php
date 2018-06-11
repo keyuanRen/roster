@@ -1,6 +1,19 @@
 <?php 
 include("autoloader.php");
 session_start();
+//check if user is not logged in
+if(!$_SESSION["account_id"]){
+  header("location:login.php");
+  exit();
+}
+else{
+  //get the company id from session
+  $company_id = $_SESSION["company_id"];
+  $account_id = $_SESSION["account_id"];
+}
+
+
+
 ?>
 
 
@@ -13,74 +26,75 @@ session_start();
         <div>
             <img class="managerBanner" src="images/banner4.jpg">
         </div>
-        
-        <form>
-          
+          <div class="container">
+            
+          </div>
           <div>
             <label><h3>Your Working Shift:</h3></label>
           </div>
           
-          <table class="table table-hover table-dark">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">Job Position</th>
-                <th scope="col">WorkingDay</th>
-                <th scope="col">StartTime</th>
-                <th scope="col">FinishTime</th>
-                
-              </tr>
-            </thead>
-            <tbody>
-              
-                <?php
-                    //this is the database user that the website will use
-   
-                  $host  = getenv('dbhost');
-                  $password = getenv('dbpassword');
-                  $username  = getenv('dbuser');
-                  $database  = getenv('database');
+          <div class="table-responsive-sm">
+            <table class="table table-hover table-dark">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Job Position</th>
+                  <th scope="col">Working Day</th>
+                  <th scope="col">Start Time</th>
+                  <th scope="col">Finish Time</th>
                   
-                 // Create connection
-                 $connection = new mysqli($host, $username,$password , $database);
-            
-                // Check connection
-                // if ($connection->connect_error) {
-                //     die("Connection failed: " . $connection->connect_error);
-                // } 
-                // echo "Connected successfully (".$connection->host_info.")";
-
+                </tr>
+              </thead>
+              <tbody>
                 
-                $timestart = "SELECT * FROM shifts ";
-    
-                
-                if ($result=mysqli_query($connection,$timestart))
-                {
-                 // Fetch one and one row
-                  while ($row=mysqli_fetch_row($result))
+                  <?php
+                      //this is the database user that the website will use
+     
+                    $host  = getenv('dbhost');
+                    $password = getenv('dbpassword');
+                    $username  = getenv('dbuser');
+                    $database  = getenv('database');
+                    
+                   // Create connection
+                   $connection = new mysqli($host, $username,$password , $database);
+              
+                  // Check connection
+                  // if ($connection->connect_error) {
+                  //     die("Connection failed: " . $connection->connect_error);
+                  // } 
+                  // echo "Connected successfully (".$connection->host_info.")";
+  
+                  
+                  $timestart = "SELECT * FROM shifts ";
+      
+                  
+                  if ($result=mysqli_query($connection,$timestart))
                   {
-                    echo "<tr>";
-                    echo "<th scope='row'>$row[0]</th>";
-                    printf ("<td>%s</td>",$row[3]);
-                    printf ("<td>%s</td>",$row[4]);
-                    printf ("<td>%s</td>",$row[5]);
-                    printf ("<td>%s</td>",$row[6]);
-                    echo"</tr>";
-                      
+                   // Fetch one and one row
+                    while ($row=mysqli_fetch_row($result))
+                    {
+                      echo "<tr>";
+                      echo "<th scope='row'>$row[0]</th>";
+                      printf ("<td>%s</td>",$row[3]);
+                      printf ("<td>%s</td>",$row[4]);
+                      printf ("<td>%s</td>",$row[5]);
+                      printf ("<td>%s</td>",$row[6]);
+                      echo"</tr>";
+                        
+                    }
+                    
+                  // Free result set
+                  mysqli_free_result($result);
                   }
                   
-                // Free result set
-                mysqli_free_result($result);
-                }
-                
-                   mysqli_close($connection);
-                   
-                ?>
-                
-            </tbody>
-          </table>
-          
-        </form>
+                     mysqli_close($connection);
+                     
+                  ?>
+                  
+              </tbody>
+            </table>
+          </div>
+        
           
     </body>
     <?php include ('includes/footer.php'); ?>

@@ -1,5 +1,6 @@
 <?php
 include('autoloader.php');
+session_start();
 
 //check for POST request
 // if( $_SERVER['REQUEST_METHOD'] == 'POST'){

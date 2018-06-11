@@ -86,6 +86,8 @@ session_start();
           
         </form>
         
+        <!--<input name="date" type="date">-->
+        
         <button type="submit" class="btn btn-primary float-right" onclick="window.open('managerConfirm.php','_self');">Confirm Setting</button>
           
     </body>

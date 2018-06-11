@@ -25,7 +25,6 @@ $(document).ready( () => {
        //validate companyId
        (parseInt(companyId) > 0) ? validation.companyId = true : validation.companyId = false;
        
-       console.log(validation);
        //if all validation is true
        if( validation.username && 
            validation.email && 
@@ -35,7 +34,7 @@ $(document).ready( () => {
         ){
            //create data
             let managerData = {account_name: username, email: email, password: password, roleId: roleId, companyId: companyId };
-            
+            console.log(managerData);
             //send data to server
             $.ajax({
               url: '/ajax/registermanager.ajax.php',
