@@ -51,6 +51,35 @@ class Employee extends Account{
            return false;
        }
     }
+    
+    public function getEmployees($company_id){
+        $query = 'Select account_name, account_id from accounts where company_id =?  
+        and role_id = 4';
+        $statement = $this -> connection -> prepare( $query );
+        $statement -> bind_param( 'i' , $company_id );
+        
+        if($statement -> execute() ){
+            $result = $statement -> get_result();
+            if($result -> num_rows > 0)
+            {
+                 $employees = array();
+                 while ($row = $result -> fetch_assoc() ){
+                     array_push($employees,$row);
+                 }
+                 
+                 return $employees;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else{
+            $this-> errors["employee"]= "database error";
+            return false;
+        }
+    }
+    
 }
 
 ?>

@@ -3,37 +3,41 @@ $(document).ready( () => {
   $('#add').click( () => {
     let uniqueid = new Date().getTime();
     let template= `
-  <div id="form" class="form-row">
-            <div class="form-group col-md-2">
-              <label for="inputEmployeeName">Employee</label>
-              <input type="employeeName" class="form-control" id="inputEmployeeName" placeholder="Bob">
+            <div  class="form-row">
+              <div class="form-group col-md-2">
+                <input type="employeeName" class="form-control" id="inputEmployeeName" placeholder="EmlpoyeeName">
+              </div>
+              
+              <div class="form-group col-md-2">
+                <select id="inputState" class="form-control">
+                  <option selected>Cooker</option>
+                  <option selected>SalesClerk</option>
+                  <option selected>Delivery Man</option>
+                </select>
+              </div>
+              
+              <div class="form-group col-md-2">
+                <input id="startTime" type="time" class="form-control">
+              </div>
+              
+              <div class="form-group col-md-2">
+                <input id="finishTime" type="time" class="form-control">
+              </div>
+              
+              <div class="form-group col-md-2">
+                <input id="workingDay" type="date" class="form-control">
+              </div>
+              
+              <div class="form-group col-md-1">
+                <button type="button" id="add" class="btn btn-primary" ">Add</button>
+              </div>
+              
+              <div class="form-group col-md-1">
+                <button type="button" id="confirm" class="btn btn-primary" ">Confirm</button>
+              </div>
+              
             </div>
-            
-            <div class="form-group col-md-2">
-              <label for="inputState">Job Position</label>
-              <select id="inputState" class="form-control">
-                <option selected>Cooker</option>
-                <option selected>SalesClerk</option>
-                <option selected>Delivery Man</option>
-              </select>
-            </div>
-            
-            <div class="form-group col-md-2">
-              <label for="inputState">Start Time</label>
-              <input id="startTime" type="time" class="form-control">
-            </div>
-            
-            <div class="form-group col-md-2">
-              <label for="inputState">Finish Time</label>
-              <input id="finishTime" type="time" class="form-control">
-            </div>
-            
-            <div class="form-group col-md-2">
-              <label for="inputState">Working Day</label>
-              <input id="workingDay" type="date" class="form-control">
-            </div>
-          </div>
-  `;
+    `;
     $('#form').append(template);
   });
 });

@@ -65,7 +65,9 @@ else{
                   // echo "Connected successfully (".$connection->host_info.")";
   
                   
-                  $timestart = "SELECT * FROM shifts ";
+                  $timestart = "SELECT * FROM shifts inner join accounts 
+                on shifts.account_id = accounts.account_id
+                and role_id = 3";
       
                   
                   if ($result=mysqli_query($connection,$timestart))
@@ -75,10 +77,10 @@ else{
                     {
                       echo "<tr>";
                       echo "<th scope='row'>$row[0]</th>";
+                      printf ("<td>%s</td>",$row[2]);
                       printf ("<td>%s</td>",$row[3]);
                       printf ("<td>%s</td>",$row[4]);
                       printf ("<td>%s</td>",$row[5]);
-                      printf ("<td>%s</td>",$row[6]);
                       echo"</tr>";
                         
                     }

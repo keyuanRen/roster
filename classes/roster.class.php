@@ -18,8 +18,8 @@ class Roster extends Manager{
       return false;
     }
     else{
-      $query = "INSERT INTO rosters 
-      (company_id,manager_id,start_date,created) 
+      $query = "INSERT INTO shifts 
+      (employeeID,job_position,start_date,shift_date,time_start,time_end) 
       VALUES 
       (?,?,?,NOW())";
       $statement = $this -> connection -> prepare($query);
