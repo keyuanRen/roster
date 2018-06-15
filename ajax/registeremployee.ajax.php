@@ -11,9 +11,9 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
     $response = array();
     $errors = array();
     
-    //create manager class
+    //create employee class
     $employee = new Employee();
-    //create manager account
+    //create  account
     $creation = $employee -> create($account_name,$email,$password,$roleId,$access_code);
     
     if( $creation == true ){
@@ -22,7 +22,6 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
     else{
         $response['success'] = false;
         $response['errors'] = $manager -> errors;
-        var_dump($employee);
     }
     echo json_encode($response);
 }

@@ -23,9 +23,9 @@ else{
     <body>
         <?php include('includes/navbar.php'); ?>
         
-        <div>
-            <img class="managerBanner" src="images/banner4.jpg">
-        </div>
+        <!--<div>-->
+        <!--    <img class="managerBanner" src="images/banner4.jpg">-->
+        <!--</div>-->
           <div class="container">
             
           </div>

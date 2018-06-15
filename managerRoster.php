@@ -1,7 +1,8 @@
 <?php 
 include("autoloader.php");
 session_start();
-
+print_r($_SESSION);
+//get all the company employees, based on manager's id
 ?>
 
 <!doctype html>

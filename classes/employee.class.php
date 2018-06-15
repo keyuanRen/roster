@@ -53,8 +53,15 @@ class Employee extends Account{
     }
     
     public function getEmployees($company_id){
-        $query = 'Select account_name, account_id from accounts where company_id =?  
-        and role_id = 4';
+        $query = 'SELECT 
+        accounts.account_name AS account_name, 
+        accounts.account_id AS account_id,
+        employee_id
+        FROM accounts
+        INNER JOIN employees
+        ON employees.account_id = accounts.account_id
+        where accounts.company_id =?  
+        AND accounts.role_id = 4';
         $statement = $this -> connection -> prepare( $query );
         $statement -> bind_param( 'i' , $company_id );
         
@@ -79,7 +86,16 @@ class Employee extends Account{
             return false;
         }
     }
-    
+    public function getEmployeeId( $account_id ){
+        $query = "SELECT employee_id FROM employees WHERE account_id = ?";
+        $statement = $this -> connection -> prepare( $query );
+        $statement -> bind_param( 'i' ,$account_id);
+        $statement -> execute();
+        $result = $statement -> get_result();
+        $row = $result -> fetch_assoc();
+        
+        return $row["employee_id"];
+    }
 }
 
 ?>

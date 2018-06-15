@@ -16,6 +16,9 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
   $account = new Account();
   $registration = $account -> register( $username, $email, $password, $defineUser, $accesscode);
   
+  $employee = new Employee();
+  $register_employee = $employee -> createEmployee($account -> account_id);
+  
   $success = array();
   $errors = array();
   
@@ -70,7 +73,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
         
         <div class="col-md-6 col-sm-6 col-xs-12 item loginDiv">
           <div id="alert-success"></div>
-          <h4 class="my-4">Register for an account</h4>
+          <h4 class="my-4">Register as an employee</h4>
           <form id="employee-register-form" method="post" action="register.php" novalidate>
             <div class="form-group">
               <label for="username">Username</label>

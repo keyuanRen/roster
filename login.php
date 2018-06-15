@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
       $destination = "/employee.php";
     }
     else{
-      $destination = "/index.php";
+      $destination = "/managerConfirm.php";
     }
     header("location: $destination");
   }

@@ -3,7 +3,8 @@ $(document).ready( () => {
     // $('button[name="register-btn"]').attr('disabled','true');
     //add a listener to form
     $('#employee-register-form').submit( (event) => {
-       event.preventDefault();
+      event.preventDefault();
+       console.log(event);
        //get values
        let username = $('input[name="account_name"]').val();
        let email = $('input[name="email"]').val();
@@ -14,7 +15,7 @@ $(document).ready( () => {
        //simply validate the form data
        let validation = {};
        //validate username
-       validation.username = (username.length >= 6 && username.length < 16) ? true :  false;
+       validation.username = (username.length >= 5 && username.length < 16) ? true :  false;
        //validate email
        validation.email = (email.length > 0 && email.indexOf('@') > 0 ) ? true : false;
        //validate password
@@ -23,7 +24,7 @@ $(document).ready( () => {
        validation.roleId = (parseInt(roleId) > 0 && parseInt(roleId) > 3) ?  true : false;
        //validate access code
        validation.accessCode = (accessCode.length==6) ?  true : false;
-       console.log
+       console.log(validation);
        //if all validation is true
         if( validation.username && 
            validation.email && 
@@ -49,10 +50,11 @@ $(document).ready( () => {
             data: employeeData
           })
           .done( (response) => {
+            console.log(response);
             if( response.success == true ){
               //success
               // redirect user to another page
-              window.href.location = '/employee.php';
+              window.location.href = '/employee.php';
             }
           });
        }

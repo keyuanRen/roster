@@ -4,10 +4,14 @@ session_start();
 
 print_r($_SESSION);
 
+$companyId = $_SESSION['company_id'];
+$account_id = $_SESSION['account_id'];
+
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
-  $emloyeeId = $_POST['employeeId'];
+  
+  $employeeId = $_POST["employeeId"];
   $jobPosition = $_POST["jobPosition"];
   $startTime = $_POST["startTime"];
   $data = $_POST["workingDay"];
@@ -18,10 +22,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
   
 }
 
-//get all employees of company
-$companyId = $_SESSION['company_id'];
-$emp = new Employee();
-$employees = $emp -> getEmployees($companyId);
+
+
+//get company data
+$comps = new Company();
+$company = $comps -> getCompanyById( $companyId );
+
+//get all employees of the company
+$emps = new Employee();
+$employees = $emps -> getEmployees($companyId);
+print_r($employees);
 ?>
 
 <!doctype html>
@@ -30,9 +40,69 @@ $employees = $emp -> getEmployees($companyId);
     <body>
         <?php include('includes/navbar.php'); ?>
         
-        <div>
-            <img class="managerBanner" src="images/banner1.jpg">
-        </div> 
+        
+        <!--<div>-->
+        <!--    <img class="managerBanner" src="images/banner1.jpg">-->
+        <!--</div>-->
+        
+        <div class="container mt-4">
+          
+          <div class="row">
+            <div class="col">
+              <div class="card border-0">
+                <div class="card-body">
+                  <h5 class="card-title font-weight-bold">
+                    <?php echo $company["company_name"]; ?>
+                  </h5>
+                  <h6>
+                    <?php echo "access code: " . $company["access_code"] ?>
+                  </h6>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col">
+              <div class="card border-0">
+                <div class="card-body">
+                  <p><?php echo $company["company_website"]; ?></p>
+                  <address>
+                    <?php
+                    if($company["unit_number"]){
+                      echo $company["unit_number"] . "/";
+                    echo $company["street_number"];
+                    }
+                    echo "&nbsp;";
+                    echo ucwords($company["street_name"]);
+                    echo "<br>";
+                    echo ucwords($company["suburb"]);
+                    echo "&nbsp;";
+                    echo ucwords($company["postcode"]);
+                    ?>
+                  </address>
+                </div>
+              </div>
+            </div>
+            <!--end row-->
+          </div>
+          <div class="row">
+            <div class="col">
+              <form id="shift-form">
+                <div class="form-group">
+                  <label for="employee">
+                    Select An Employee
+                  </label>
+                  <!--<select id="employee" name="employee">-->
+                    <?php
+                    // foreach($employees as $employee){
+                    //   print_r($employee);
+                    // }
+                    ?>
+                  <!--</select>-->
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
         
         <form id="shifts" method="post" action="managerConfirm.php" novalidate>
           <div>
@@ -44,9 +114,9 @@ $employees = $emp -> getEmployees($companyId);
               <label for="inputEmployeeName">Employee</label>
               <select type="text" name="employeeId" id="employeeId" class="form-control">
                 <?php
-                foreach ($employees as &$value)
+                foreach ($employees as $value)
                 {
-                  echo "<option value='". $value[account_id]. "'>".$value[account_name]."</option>";
+                  echo "<option value='". $value[employee_id]. "'>".$value[account_name]."</option>";
                 }
                 ?>
               </select>
@@ -74,7 +144,6 @@ $employees = $emp -> getEmployees($companyId);
               <label for="inputState">Working Day</label>
               <input name="workingDay" id="workingDay" type="date" class="form-control">
             </div>
-            
             <div class="form-group col-md-2">
               <button type="submit" id="insertShift" class="btn btn-primary" style="margin-top: 30px;">Add</button>
             </div>

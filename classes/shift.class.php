@@ -6,20 +6,97 @@ class Shift extends Database{
     
     public function createShift($employeeId,$jobPostion,$date,$timeStart,$timeEnd)
     {
-        $query = "Insert into shifts (employee_id,job_position,shift_date,time_start,time_end) 
+        echo $start_date = date_format(date_create($date), "Y-m-d");
+        echo $start_time = date_format(date_create($timeStart), "H:i:s");
+        echo $end_time = date_format(date_create($timeEnd), "H:i:s");
+        
+        $query = "INSERT INTO shifts (employee_id,job_position,shift_date,time_start,time_end) 
         values(?,?,?,?,?)";
         
         $statement = $this -> connection -> prepare( $query );
-        $statement -> bind_param( 'issss' ,$employeeId,$jobPostion,$date,$timeStart,$timeEnd);
+        echo $statement -> bind_param( 'issss' ,$employeeId,$jobPostion,$start_date,$start_time,$end_time);
         
-    // if( $statement -> execute() ){
-    //       $this -> employee_id = $this -> connection -> insert_id;
-    //       return true;
-    //   }
-    //   else{
-    //       $this -> errors["shift"] = "database error";
-    //       return false;
-    //   }
+        
+        
+      if( $statement -> execute() ){
+          $this -> employee_id = $this -> connection -> insert_id;
+          return true;
+      }
+      else{
+          $this -> errors["shift"] = "database error";
+          echo $this -> connection -> error;
+          return false;
+      }
+    }
+    
+    public function showShiftForEmployee($account_id)
+    {
+        $query = "SELECT
+        shift_id,
+        employee_id,
+        job_position,
+        shift_date,
+        time_start,
+        time_end
+        FROM shifts 
+        INNER JOIN accounts 
+        ON shifts.account_id = accounts.account_id
+        WHERE
+        accounts.account_id =?
+        AND 
+        role_id = 3 
+        AND 
+        published = 1";
+        
+        $statement = $this -> connection -> prepare( $query );
+        $statement -> bind_param( 'i' ,$account_id);
+        $statement -> execute();
+        $result = $statement -> get_result();
+        if( $result -> num_rows > 0 ){
+            $employee_shifts = array();
+            while($row = $result -> fetch_assoc() ){
+                array_push( $employee_shifts, $row );
+            }
+            return $employee_shifts;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public function showShiftForManager($company_id)
+    {
+        $query = "SELECT * 
+        FROM shifts 
+        inner join accounts 
+        on shifts.employee_id = accounts.account_id
+        WHERE accounts.company_id = ? ";
+        
+        $statement = $this -> connection -> prepare( $query );
+        $statement -> bind_param( 'i' ,$company_id);
+        $statement -> execute();
+        $result = $statement -> get_result();
+        if( $result -> num_rows > 0 ){
+            $employee_shifts = array();
+            while($row = $result -> fetch_assoc() ){
+                array_push( $employee_shifts, $row );
+            }
+            return $employee_shifts;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    static function getEmployeeId( $account_id ){
+        $query = "SELECT employee_id FROM employees WHERE account_id = ?";
+        $statement = $this -> connection -> prepare( $query );
+        $statement -> bind_param( 'i' ,$account_id);
+        $statement -> execute();
+        $result = $statement -> get_result();
+        $row = $result -> fetch_assoc();
+        
+        return $row["employee_id"];
     }
 }
 

@@ -65,14 +65,11 @@
       <!--</li>-->
       <?php
       if( $_SESSION['role'] == "3" ){//manager
-      echo "<li class=\"nav-item dropdown\">
-        <a class=\"nav-link dropdown-toggle\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-          Manager
-        </a>
-        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
-          <a class=\"dropdown-item\" href=\"managerRoster.php\">managerRoster</a>
-          <a class=\"dropdown-item\" href=\"managerConfirm.php\">SetYourRoster</a>
-      </li>";
+      echo "
+      <li class=\"nav-item\">
+        <a class=\"nav-link\" href=\"managerConfirm.php\">SetYourRoster</a>
+      </li>
+      ";
       }
       ?>
       <li class="nav-item">
