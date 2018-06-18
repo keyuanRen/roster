@@ -4,7 +4,7 @@ class Shift extends Database{
         parent::__construct();
     }
     
-    public function createShift($employeeId,$jobPostion,$date,$timeStart,$timeEnd)
+    public function createShift($employeeId,$jobPosition,$date,$timeStart,$timeEnd)
     {
         $start_date = date_format(date_create($date), "Y-m-d");
         $start_time = date_format(date_create($timeStart), "H:i:s");
@@ -14,7 +14,7 @@ class Shift extends Database{
         values(?,?,?,?,?)";
         
         $statement = $this -> connection -> prepare( $query );
-        $statement -> bind_param( 'issss' ,$employeeId,$jobPostion,$start_date,$start_time,$end_time);
+        $statement -> bind_param( 'issss' ,$employeeId,$jobPosition,$start_date,$start_time,$end_time);
         
         
         

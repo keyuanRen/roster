@@ -31,11 +31,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 }
 
 ?>
+
 <!doctype html>
 <html>
   <?php include ('includes/head.php'); ?>
   <body>
     <?php include('includes/navbar.php'); ?>
+    
     <div class="container-fluid content">
       
       <div class="row">
@@ -74,9 +76,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
               <button type="submit" class="btn btn-outline-primary btn-block">Log in</button>
             </div>
           </form>
+          <!-- end item -->
         </div>
+        <!--end row-->
       </div>
+      <!--end container-->
     </div>
+    
   </body>
   <?php include ('includes/footer.php'); ?>
 </html>

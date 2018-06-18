@@ -12,8 +12,6 @@ else{
   $account_id = $_SESSION["account_id"];
 }
 
-
-
 ?>
 
 
@@ -23,12 +21,6 @@ else{
     <body>
         <?php include('includes/navbar.php'); ?>
         
-        <!--<div>-->
-        <!--    <img class="managerBanner" src="images/banner4.jpg">-->
-        <!--</div>-->
-          <div class="container">
-            
-          </div>
           <div>
             <label><h3>Your Working Shift:</h3></label>
           </div>
@@ -37,7 +29,6 @@ else{
             <table class="table table-hover table-dark">
               <thead>
                 <tr>
-                  <th scope="col"></th>
                   <th scope="col">Job Position</th>
                   <th scope="col">Working Day</th>
                   <th scope="col">Start Time</th>
@@ -59,43 +50,38 @@ else{
                    $connection = new mysqli($host, $username,$password , $database);
             
                   
-                  // $account_id = $_SESSION['account_id'];
+                  $account_id = $_SESSION['account_id'];
                   
-                  // //get employee data
-                  // $employee = new Employee();
-                  // $employeeID = $employee -> getEmployeeId( $account_id );
-                  
+                  //get employee data
+                  $employee = new Employee();
+                  $employeeID = $employee -> getEmployeeId( $account_id );
                   $query = "SELECT
                   job_position,
                   shift_date,
                   time_start,
                   time_end
                   FROM shifts
-                  where employee_id = 1";
+                  where employee_id = ?";
                   
-                  // $statement = $this -> connection -> prepare( $query );
-                  // $statement -> bind_param( 'i' ,$employeeID);
+                  $statement = $connection -> prepare( $query );
+                  $statement -> bind_param( 'i' ,$employeeID);
       
                   
-                  if ($result=mysqli_query($connection,$query))
+                  if ($statement -> execute())
                   {
+                    $result = $statement -> get_result();
                    // Fetch one and one row
-                    while ($row=mysqli_fetch_row($result))
+                    while ($row = $result->fetch_assoc())
                     {
                       echo "<tr>";
-                      echo "<th scope='row'>$row[0]</th>";
-                      printf ("<td>%s</td>",$row[0]);
-                      printf ("<td>%s</td>",$row[1]);
-                      printf ("<td>%s</td>",$row[2]);
-                      printf ("<td>%s</td>",$row[3]);
+                      echo "<th scope='row'>".$row['job_position']."</th>";
+                      printf ("<td>%s</td>",$row['shift_date']);
+                      printf ("<td>%s</td>",$row['time_start']);
+                      printf ("<td>%s</td>",$row['time_end']);
                       echo"</tr>";
                         
                     }
-                    
-                  // Free result set
-                  mysqli_free_result($result);
                   }
-                  
                      mysqli_close($connection);
                      
                   ?>

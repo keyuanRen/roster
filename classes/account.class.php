@@ -64,6 +64,14 @@ class Account extends Database{
       $statement -> bind_param('sssii', $account_name, $email, $hash, $roleId, $companyId);
       //execute query
       if( $statement -> execute() ){
+        if(session_status() == PHP_SESSION_NONE)
+        {
+          session_start();
+        }
+        $_SESSION["account_name"] = $account_name;
+        $_SESSION["account_id"] = $this-> connection -> insert_id;;
+        $_SESSION["role"] = $roleId;
+        $_SESSION["company_id"] = $companyId;
         $this -> account_id = $this -> connection -> insert_id;
         $this -> role_id = $roleId;
         return true;

@@ -44,6 +44,11 @@ $(document).ready( () => {
             })
             .done( (response) => {
                 console.log( response );
+                if( response.success == true ){
+              //success
+              // redirect user to another page
+              window.location.href = '/managerConfirm.php';
+            }
             });
        }
         //if validation fails

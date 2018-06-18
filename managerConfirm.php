@@ -4,9 +4,16 @@ session_start();
 
 // print_r($_SESSION);
 
-$companyId = $_SESSION['company_id'];
-$account_id = $_SESSION['account_id'];
-
+//check if user is not logged in
+if(!$_SESSION["account_id"]){
+  header("location:login.php");
+  exit();
+}
+else{
+  //get the company id from session
+  $company_id = $_SESSION["company_id"];
+  $account_id = $_SESSION["account_id"];
+}
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
@@ -18,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
   $finishTime = $_POST["finishTime"];
   
   $shift = new Shift();
-  $shift-> createShift($employeeId,$jobPostion,$date,$startTime,$finishTime);
+  $shift-> createShift($employeeId,$jobPosition,$date,$startTime,$finishTime);
   
 }
 
@@ -39,11 +46,6 @@ $employees = $emps -> getEmployees($companyId);
     <?php include('includes/head.php'); ?>
     <body>
         <?php include('includes/navbar.php'); ?>
-        
-        
-        <!--<div>-->
-        <!--    <img class="managerBanner" src="images/banner1.jpg">-->
-        <!--</div>-->
         
         <div class="container mt-4">
           
@@ -84,26 +86,7 @@ $employees = $emps -> getEmployees($companyId);
             </div>
             <!--end row-->
           </div>
-          
-          <!--<div class="row">-->
-          <!--  <div class="col">-->
-          <!--    <form id="shift-form">-->
-          <!--      <div class="form-group">-->
-          <!--        <label for="employee">-->
-          <!--          Select An Employee-->
-          <!--        </label>-->
-                  <!--<select id="employee" name="employee">-->
-                    <?php
-                    // foreach($employees as $employee){
-                    //   print_r($employee);
-                    // }
-                    ?>
-                  <!--</select>-->
-          <!--      </div>-->
-          <!--    </form>-->
-          <!--  </div>-->
-          <!--</div>-->
-          
+          <!--end container-->
         </div>
         
         <form id="shifts" method="post" action="managerConfirm.php" novalidate>
@@ -126,9 +109,11 @@ $employees = $emps -> getEmployees($companyId);
             
             <div class="form-group col-md-2">
               <label for="inputState">Job Position</label>
-              <select type="text" name="jobPosition" id="jobPosition" class="form-control">
-                <option selected>SalesClerk</option>
-                <option selected>Delivery Man</option>
+              <select name="jobPosition" id="jobPosition" class="form-control">
+                <option selected value="Sales Clerk">SalesClerk</option>
+                <option value="Delivery Man">Delivery Man</option>
+                <option value="Cleaner">Cleaner</option>
+                <option value="Waiter">Waiter</option>
               </select>
             </div>
             
@@ -149,10 +134,6 @@ $employees = $emps -> getEmployees($companyId);
             <div class="form-group col-md-2">
               <button type="submit" id="insertShift" class="btn btn-primary" style="margin-top: 30px;">Add</button>
             </div>
-            
-            <!--<div class="form-group col-md-1">-->
-            <!--  <button type="button" id="confirm" class="btn btn-primary" style="margin-top: 30px;">Confirm</button>-->
-            <!--</div>-->
             
           </div>
           
@@ -181,66 +162,69 @@ $employees = $emps -> getEmployees($companyId);
             </thead>
             <tbody>
               
-              <?php
-                //this is the database user that the website will use
- 
-                $host  = getenv('dbhost');
-                $password = getenv('dbpassword');
-                $username  = getenv('dbuser');
-                $database  = getenv('database');
-                
-                // Create connection
-                $connection = new mysqli($host, $username,$password , $database);
-          
-                // Check connection
-                // if ($connection->connect_error) {
-                //     die("Connection failed: " . $connection->connect_error);
-                // } 
-                // echo "Connected successfully (".$connection->host_info.")";
+          <?php
+            //this is the database user that the website will use
 
-              
-                $timestart = "SELECT 
-                s.employee_id,
-                a.account_name,
-                s.job_position, 
-                s.shift_date, 
-                s.time_start, 
-                s.time_end 
-                FROM shifts s,
-                employees e,
-                accounts a
-                where s.employee_id = e.employee_id and e.account_id = a.account_id";
-  
-              
-                if ($result=mysqli_query($connection,$timestart))
-                {
-                 // Fetch one and one row
-                  while ($row=mysqli_fetch_row($result))
-                  {
-                    echo "<tr>";
-                    echo "<th scope='row'>$row[0]</th>";
-                    printf ("<td>%s</td>",$row[1]);
-                    printf ("<td>%s</td>",$row[2]);
-                    printf ("<td>%s</td>",$row[3]);
-                    printf ("<td>%s</td>",$row[4]);
-                    printf ("<td>%s</td>",$row[5]);
-                    echo"</tr>";
-                      
-                  }
-                    
-                  // Free result set
-                  mysqli_free_result($result);
-                  }
+            $host  = getenv('dbhost');
+            $password = getenv('dbpassword');
+            $username  = getenv('dbuser');
+            $database  = getenv('database');
+            
+            // Create connection
+            $connection = new mysqli($host, $username,$password , $database);
+      
+            // Check connection
+            // if ($connection->connect_error) {
+            //     die("Connection failed: " . $connection->connect_error);
+            // } 
+            // echo "Connected successfully (".$connection->host_info.")";
+            
+            $company_id = $_SESSION['company_id'];
+          
+            $query = "SELECT 
+            s.employee_id,
+            a.account_name,
+            s.job_position, 
+            s.shift_date, 
+            s.time_start, 
+            s.time_end 
+            FROM shifts s,
+            employees e,
+            accounts a
+            where s.employee_id = e.employee_id and e.account_id = a.account_id
+            and a.company_id = ?";
+            
+            $statement = $connection -> prepare( $query );
+            $statement -> bind_param( 'i' ,$company_id);
+    
+            if ($statement -> execute())
+            {
+              $result = $statement -> get_result();
+             // Fetch one and one row
+              while ($row = $result->fetch_assoc())
+              {
+                echo "<tr>";
+                      echo "<th scope='row'>".$row['employee_id']."</th>";
+                      printf ("<td>%s</td>",$row['account_name']);
+                      printf ("<td>%s</td>",$row['job_position']);
+                      printf ("<td>%s</td>",$row['shift_date']);
+                      printf ("<td>%s</td>",$row['time_start']);
+                      printf ("<td>%s</td>",$row['time_end']);
+                      echo"</tr>";
                   
-                 mysqli_close($connection);
-                     
-                ?>
+              }
+                
+            }
+              
+             mysqli_close($connection);
+                 
+            ?>
                     
             </tbody>
           </table>
           
         </form>
-        <!--<script src="/js/settingRoster.js"></script>-->
+        
     </body>
     <?php include ('includes/footer.php'); ?>
 </html>
