@@ -16,17 +16,21 @@ session_start();
             <div class="col-sm item bg-muted text-secondary">
               <img src="images/car1.jpg" alt="..." class="img-thumbnail">
               <h2>define your own business model</h2>
-              <p class="text-justify">&nbsp;&nbsp;The use of TRoaster allows manager to control their own business model to suit user needs.</br>&nbsp;&nbsp;type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> 
+              <p class="text-justify">&nbsp;&nbsp;The use of TRoaster allows manager to control their own business model to suit user needs.</br>&nbsp;&nbsp;When manager register, the system will generate the access code for the company and manager will need to fill up their business
+              information. The use of access code is for the employee's registeration where they need to define which company they belong to.</p> 
             </div>
             <div class="col-sm item bg-muted text-secondary">
               <img src="images/car2.jpg" alt="..." class="img-thumbnail">
               <h2 class="text-left text-sm-center">make your roster</h2>
-              <p class="text-justify">&nbsp;&nbsp;The use of TRoaster can save manager time for making rosater for employee.</br>&nbsp;&nbsp;type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> 
+              <p class="text-justify">&nbsp;&nbsp;The use of TRoaster can save manager time for making rosater for employee.</br>&nbsp;&nbsp;
+              In here, manager can see their employee and organize their job position, working date, working start time and working finish time. 
+              Manager can also view their all of the employee's work shift whos belong to his company.</p> 
             </div>
             <div class="col-sm item bg-muted text-secondary">
               <img src="images/car3.jpg" alt="..." class="img-thumbnail">
               <h2 class="text-left text-sm-right">view your roster</h2>
-              <p class="text-justify">&nbsp;&nbsp;The use of TRoaster allows both manager and employee view the roster graghically.</br>&nbsp;&nbsp;type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> 
+              <p class="text-justify">&nbsp;&nbsp;The use of TRoaster allows both manager and employee view the roster graghically.</br>&nbsp;&nbsp;
+              As employee, Troster provide you the online updated work shift for you from your manager. You can check your work shift at any time.</p> 
             </div>
           </div>
         </div>

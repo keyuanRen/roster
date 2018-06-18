@@ -2,7 +2,7 @@
 include("autoloader.php");
 session_start();
 
-print_r($_SESSION);
+// print_r($_SESSION);
 
 $companyId = $_SESSION['company_id'];
 $account_id = $_SESSION['account_id'];
@@ -31,7 +31,7 @@ $company = $comps -> getCompanyById( $companyId );
 //get all employees of the company
 $emps = new Employee();
 $employees = $emps -> getEmployees($companyId);
-print_r($employees);
+// print_r($employees);
 ?>
 
 <!doctype html>
@@ -49,7 +49,7 @@ print_r($employees);
           
           <div class="row">
             <div class="col">
-              <div class="card border-0">
+              <div class="card card-first border-0 bg-info text-center">
                 <div class="card-body">
                   <h5 class="card-title font-weight-bold">
                     <?php echo $company["company_name"]; ?>
@@ -62,13 +62,13 @@ print_r($employees);
             </div>
             
             <div class="col">
-              <div class="card border-0">
+              <div class="card border-0 bg-info text-center">
                 <div class="card-body">
                   <p><?php echo $company["company_website"]; ?></p>
                   <address>
                     <?php
                     if($company["unit_number"]){
-                      echo $company["unit_number"] . "/";
+                    echo $company["unit_number"] . "/";
                     echo $company["street_number"];
                     }
                     echo "&nbsp;";
@@ -84,13 +84,14 @@ print_r($employees);
             </div>
             <!--end row-->
           </div>
-          <div class="row">
-            <div class="col">
-              <form id="shift-form">
-                <div class="form-group">
-                  <label for="employee">
-                    Select An Employee
-                  </label>
+          
+          <!--<div class="row">-->
+          <!--  <div class="col">-->
+          <!--    <form id="shift-form">-->
+          <!--      <div class="form-group">-->
+          <!--        <label for="employee">-->
+          <!--          Select An Employee-->
+          <!--        </label>-->
                   <!--<select id="employee" name="employee">-->
                     <?php
                     // foreach($employees as $employee){
@@ -98,10 +99,11 @@ print_r($employees);
                     // }
                     ?>
                   <!--</select>-->
-                </div>
-              </form>
-            </div>
-          </div>
+          <!--      </div>-->
+          <!--    </form>-->
+          <!--  </div>-->
+          <!--</div>-->
+          
         </div>
         
         <form id="shifts" method="post" action="managerConfirm.php" novalidate>
@@ -197,7 +199,17 @@ print_r($employees);
                 // echo "Connected successfully (".$connection->host_info.")";
 
               
-                $timestart = "SELECT * FROM shifts";
+                $timestart = "SELECT 
+                s.employee_id,
+                a.account_name,
+                s.job_position, 
+                s.shift_date, 
+                s.time_start, 
+                s.time_end 
+                FROM shifts s,
+                employees e,
+                accounts a
+                where s.employee_id = e.employee_id and e.account_id = a.account_id";
   
               
                 if ($result=mysqli_query($connection,$timestart))
@@ -207,11 +219,11 @@ print_r($employees);
                   {
                     echo "<tr>";
                     echo "<th scope='row'>$row[0]</th>";
-                    printf ("<td>%s</td>",$row[8]);
+                    printf ("<td>%s</td>",$row[1]);
+                    printf ("<td>%s</td>",$row[2]);
                     printf ("<td>%s</td>",$row[3]);
                     printf ("<td>%s</td>",$row[4]);
                     printf ("<td>%s</td>",$row[5]);
-                    printf ("<td>%s</td>",$row[6]);
                     echo"</tr>";
                       
                   }

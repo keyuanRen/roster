@@ -57,30 +57,37 @@ else{
                     
                    // Create connection
                    $connection = new mysqli($host, $username,$password , $database);
-              
-                  // Check connection
-                  // if ($connection->connect_error) {
-                  //     die("Connection failed: " . $connection->connect_error);
-                  // } 
-                  // echo "Connected successfully (".$connection->host_info.")";
-  
+            
                   
-                  $timestart = "SELECT * FROM shifts inner join accounts 
-                on shifts.account_id = accounts.account_id
-                and role_id = 3";
+                  // $account_id = $_SESSION['account_id'];
+                  
+                  // //get employee data
+                  // $employee = new Employee();
+                  // $employeeID = $employee -> getEmployeeId( $account_id );
+                  
+                  $query = "SELECT
+                  job_position,
+                  shift_date,
+                  time_start,
+                  time_end
+                  FROM shifts
+                  where employee_id = 1";
+                  
+                  // $statement = $this -> connection -> prepare( $query );
+                  // $statement -> bind_param( 'i' ,$employeeID);
       
                   
-                  if ($result=mysqli_query($connection,$timestart))
+                  if ($result=mysqli_query($connection,$query))
                   {
                    // Fetch one and one row
                     while ($row=mysqli_fetch_row($result))
                     {
                       echo "<tr>";
                       echo "<th scope='row'>$row[0]</th>";
+                      printf ("<td>%s</td>",$row[0]);
+                      printf ("<td>%s</td>",$row[1]);
                       printf ("<td>%s</td>",$row[2]);
                       printf ("<td>%s</td>",$row[3]);
-                      printf ("<td>%s</td>",$row[4]);
-                      printf ("<td>%s</td>",$row[5]);
                       echo"</tr>";
                         
                     }

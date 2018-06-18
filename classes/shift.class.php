@@ -6,15 +6,15 @@ class Shift extends Database{
     
     public function createShift($employeeId,$jobPostion,$date,$timeStart,$timeEnd)
     {
-        echo $start_date = date_format(date_create($date), "Y-m-d");
-        echo $start_time = date_format(date_create($timeStart), "H:i:s");
-        echo $end_time = date_format(date_create($timeEnd), "H:i:s");
+        $start_date = date_format(date_create($date), "Y-m-d");
+        $start_time = date_format(date_create($timeStart), "H:i:s");
+        $end_time = date_format(date_create($timeEnd), "H:i:s");
         
         $query = "INSERT INTO shifts (employee_id,job_position,shift_date,time_start,time_end) 
         values(?,?,?,?,?)";
         
         $statement = $this -> connection -> prepare( $query );
-        echo $statement -> bind_param( 'issss' ,$employeeId,$jobPostion,$start_date,$start_time,$end_time);
+        $statement -> bind_param( 'issss' ,$employeeId,$jobPostion,$start_date,$start_time,$end_time);
         
         
         
@@ -24,7 +24,7 @@ class Shift extends Database{
       }
       else{
           $this -> errors["shift"] = "database error";
-          echo $this -> connection -> error;
+          $this -> connection -> error;
           return false;
       }
     }
@@ -76,7 +76,8 @@ class Shift extends Database{
         $statement -> bind_param( 'i' ,$company_id);
         $statement -> execute();
         $result = $statement -> get_result();
-        if( $result -> num_rows > 0 ){
+        if( $result -> num_rows > 0 )
+        {
             $employee_shifts = array();
             while($row = $result -> fetch_assoc() ){
                 array_push( $employee_shifts, $row );
