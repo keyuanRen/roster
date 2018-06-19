@@ -9,11 +9,10 @@ if(!$_SESSION["account_id"]){
   header("location:login.php");
   exit();
 }
-else{
-  //get the company id from session
-  $company_id = $_SESSION["company_id"];
-  $account_id = $_SESSION["account_id"];
-}
+
+
+$company_id = $_SESSION["company_id"];
+$account_id = $_SESSION["account_id"];
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
@@ -29,17 +28,22 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
   
 }
 
-
-
 //get company data
 $comps = new Company();
-$company = $comps -> getCompanyById( $companyId );
+$company = $comps -> getCompanyById( $company_id );
 
 //get all employees of the company
 $emps = new Employee();
-$employees = $emps -> getEmployees($companyId);
+$employees = $emps -> getEmployees($company_id);
 // print_r($employees);
 ?>
+
+// i add this commons cause
+// my team forgot to mention the delete function for roster
+// that manager can delete the roster if he makes mistakes
+// the plan can be similar like add new roster instead of this,
+// using delete SQL query by id from the managerRoster
+// the id is the id of the shifts table
 
 <!doctype html>
 <html>
